@@ -78,7 +78,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
         )}
         <div className="bg-white rounded-3xl shadow-2xl p-8">
           <div className="flex flex-col items-center mb-8">
-            <img src="/Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mb-4" />
+            <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mb-4" />
             <h1 className="text-3xl font-bold text-gray-900">BearGuard</h1>
             <p className="text-gray-600 mt-2">
               {showResetForm ? 'Reset Your Password' : 'Referral Rep Portal'}

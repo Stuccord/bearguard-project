@@ -194,7 +194,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative">
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <img
-                  src="/WhatsApp Image 2025-11-21 at 14.53.38_237cc202.jpg"
+                  src="WhatsApp Image 2025-11-21 at 14.53.38_237cc202.jpg"
                   alt="Professional consultation and support"
                   className="w-full h-[500px] object-cover"
                 />
@@ -282,7 +282,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.39_4041563b.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.39_4041563b.jpg"
                 alt="Professional ready to assist with insurance claims"
                 className="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -404,7 +404,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.39_d63d639e.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.39_d63d639e.jpg"
                 alt="Client receiving support and guidance"
                 className="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -482,7 +482,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-6 bg-gradient-to-r from-white to-orange-200 rounded-3xl transform rotate-3 opacity-30 group-hover:opacity-40 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.38_5172faac.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.38_5172faac.jpg"
                 alt="Professional healthcare partner"
                 className="relative rounded-3xl shadow-2xl w-full h-[550px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -578,7 +578,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-300 to-orange-400 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.39_fca7de1a.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.39_fca7de1a.jpg"
                 alt="Patient receiving compassionate guidance from healthcare professional"
                 className="relative w-full max-w-3xl mx-auto rounded-2xl shadow-2xl mb-8 h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -607,7 +607,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <img
-                src="/Untitled-2 (12).png"
+                src="Untitled-2 (12).png"
                 alt="BearGuard Support Services"
                 className="h-40 w-auto mb-6"
               />

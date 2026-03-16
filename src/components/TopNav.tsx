@@ -73,7 +73,7 @@ export default function TopNav({ onMenuClick, onNavigate, onCloseSidebar }: TopN
           <Menu className="w-6 h-6 text-gray-700" />
         </button>
         <div className="flex items-center space-x-3">
-          <img src="/Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-10 h-10" />
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-10 h-10" />
           <h2 className="text-2xl font-bold text-gray-900">
             Welcome back, {agent?.full_name?.split(' ')[0] || 'Agent'}
           </h2>
