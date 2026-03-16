@@ -59,11 +59,11 @@ function AppContent() {
           <div className="space-y-3 mb-8 text-left bg-gray-50 p-6 rounded-2xl border border-gray-100 font-mono text-sm leading-6">
             <p className="flex items-center gap-2">
               <div className={`w-1.5 h-1.5 rounded-full ${import.meta.env.VITE_SUPABASE_URL ? 'bg-green-500' : 'bg-red-500'}`}/> 
-              VITE_SUPABASE_URL: {import.meta.env.VITE_SUPABASE_URL ? '✅ Connected' : '❌ Missing'}
+              VITE_SUPABASE_URL: {import.meta.env.VITE_SUPABASE_URL ? `✅ Connected (${import.meta.env.VITE_SUPABASE_URL.substring(0, 15)}...)` : '❌ Missing'}
             </p>
             <p className="flex items-center gap-2">
               <div className={`w-1.5 h-1.5 rounded-full ${import.meta.env.VITE_SUPABASE_ANON_KEY ? 'bg-green-500' : 'bg-red-500'}`}/> 
-              VITE_SUPABASE_ANON_KEY: {import.meta.env.VITE_SUPABASE_ANON_KEY ? '✅ Connected' : '❌ Missing'}
+              VITE_SUPABASE_ANON_KEY: {import.meta.env.VITE_SUPABASE_ANON_KEY ? `✅ Connected (Starts with: ${import.meta.env.VITE_SUPABASE_ANON_KEY.substring(0, 8)}...)` : '❌ Missing'}
             </p>
           </div>
 
