@@ -104,7 +104,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                 Why Us
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
+              <button onClick={() => onNavigate('contact')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
                 Contact
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
@@ -137,7 +137,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">About</button>
               <button onClick={() => scrollToSection('services')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Services</button>
               <button onClick={() => scrollToSection('why-us')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Why Us</button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Contact</button>
+              <button onClick={() => onNavigate('contact')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Contact</button>
               {user && agent ? (
                 <button onClick={() => onNavigate(agent.role === 'admin' ? 'admin-dashboard' : agent.role === 'manager' ? 'manager-dashboard' : 'referral-dashboard')} className="block w-full px-4 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 font-semibold text-base transition-colors">Go to Dashboard</button>
               ) : (
@@ -183,7 +183,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => onNavigate('contact')}
                   className="px-8 py-4 bg-white text-orange-600 border-2 border-orange-500 rounded-xl hover:bg-orange-50 transition-all duration-300 shadow-lg font-bold text-lg transform hover:scale-105"
                 >
                   Learn More
@@ -586,7 +586,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <h3 className="text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
             <p className="text-2xl text-gray-700 mb-8">Let us fight for the compensation you deserve</p>
             <button
-              onClick={() => scrollToSection('home')}
+              onClick={() => onNavigate('contact')}
               className="group px-12 py-5 bg-gradient-to-r from-orange-600 to-orange-700 text-white rounded-xl hover:from-orange-700 hover:to-orange-800 transition-all shadow-2xl font-bold text-2xl inline-flex items-center space-x-3 transform hover:scale-105"
             >
               <Phone className="w-7 h-7" />

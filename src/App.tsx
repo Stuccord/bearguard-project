@@ -32,6 +32,7 @@ import Withdrawals from './pages/Withdrawals';
 import Notifications from './pages/Notifications';
 import Sidebar from './components/Sidebar';
 import TopNav from './components/TopNav';
+import Contact from './pages/Contact';
 
 import { isConfigured } from './lib/supabase';
 import { Shield, ExternalLink } from 'lucide-react';
@@ -131,6 +132,9 @@ function AppContent() {
     }
     if (currentPage === 'login') {
       return <Login onNavigate={setCurrentPage} />;
+    }
+    if (currentPage === 'contact') {
+      return <Contact onNavigate={setCurrentPage} />;
     }
     return <LandingPage onNavigate={setCurrentPage} />;
   }
@@ -244,6 +248,8 @@ function AppContent() {
         return <Settings />;
       case 'notifications':
         return <Notifications />;
+      case 'contact':
+        return <Contact onNavigate={setCurrentPage} />;
       default:
         if (agent?.role === 'admin') return <AdminDashboard />;
         if (agent?.role === 'manager') return <ManagerDashboard />;
