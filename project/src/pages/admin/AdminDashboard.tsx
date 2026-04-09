@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Users, Shield, DollarSign, TrendingUp, UserCheck, UserX, Phone, Mail, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Users, Shield, DollarSign, TrendingUp, UserCheck, Phone, Mail, MapPin } from 'lucide-react';
 import StatCard from '../../components/StatCard';
 import { supabase } from '../../lib/supabase';
 
@@ -93,7 +93,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -110,43 +110,43 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
           title="Total Agents"
           value={stats.totalAgents}
           icon={Users}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Active Agents"
           value={stats.activeAgents}
           icon={UserCheck}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Total Clients"
           value={stats.totalClients}
           icon={Users}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Active Policies"
           value={stats.totalPolicies}
           icon={Shield}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Monthly Commissions"
           value={formatCurrency(stats.totalCommissions)}
           icon={DollarSign}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Pending Claims"
           value={stats.pendingClaims}
           icon={TrendingUp}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
       </div>
 
@@ -156,24 +156,24 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
           <div className="space-y-3">
             <button
               onClick={() => onNavigate?.('agent-management')}
-              className="w-full text-left px-4 py-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors"
+              className="w-full text-left px-4 py-3 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors"
             >
-              <div className="font-semibold text-indigo-900">Manage Agents</div>
-              <div className="text-sm text-indigo-600">View and manage all agents</div>
+              <div className="font-semibold text-orange-900">Manage Agents</div>
+              <div className="text-sm text-orange-600">View and manage all agents</div>
             </button>
             <button
               onClick={() => onNavigate?.('referral-management')}
-              className="w-full text-left px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors"
+              className="w-full text-left px-4 py-3 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors"
             >
-              <div className="font-semibold text-purple-900">Manage Referrals</div>
-              <div className="text-sm text-purple-600">Review pending referrals</div>
+              <div className="font-semibold text-orange-900">Manage Referrals</div>
+              <div className="text-sm text-orange-600">Review pending referrals</div>
             </button>
             <button
               onClick={() => onNavigate?.('withdrawal-processing')}
-              className="w-full text-left px-4 py-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors"
+              className="w-full text-left px-4 py-3 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors"
             >
-              <div className="font-semibold text-indigo-900">Process Withdrawals</div>
-              <div className="text-sm text-indigo-600">Manage withdrawal requests</div>
+              <div className="font-semibold text-orange-900">Process Withdrawals</div>
+              <div className="text-sm text-orange-600">Manage withdrawal requests</div>
             </button>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div
-                  className="bg-indigo-600 h-2 rounded-full transition-all"
+                  className="bg-orange-600 h-2 rounded-full transition-all"
                   style={{
                     width: `${stats.totalAgents > 0 ? (stats.activeAgents / stats.totalAgents) * 100 : 0}%`,
                   }}
@@ -203,7 +203,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
                 <span className="text-sm font-semibold text-gray-900">85%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full transition-all" style={{ width: '85%' }}></div>
+                <div className="bg-orange-600 h-2 rounded-full transition-all" style={{ width: '85%' }}></div>
               </div>
             </div>
             <div>
@@ -212,7 +212,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
                 <span className="text-sm font-semibold text-gray-900">72%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-indigo-600 h-2 rounded-full transition-all" style={{ width: '72%' }}></div>
+                <div className="bg-orange-600 h-2 rounded-full transition-all" style={{ width: '72%' }}></div>
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
           <h2 className="text-xl font-bold text-gray-900">All Referral Reps</h2>
           <button
             onClick={() => onNavigate?.('agent-management')}
-            className="text-sm text-purple-600 hover:text-purple-700 font-semibold"
+            className="text-sm text-orange-600 hover:text-purple-700 font-semibold"
           >
             View All
           </button>
@@ -253,8 +253,8 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
                           className="w-10 h-10 rounded-full"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-                          <span className="text-purple-600 font-semibold text-sm">
+                        <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                          <span className="text-orange-600 font-semibold text-sm">
                             {agent.full_name.charAt(0)}
                           </span>
                         </div>
@@ -295,7 +295,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps = {})
                     )}
                   </td>
                   <td className="py-4 px-4">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 capitalize">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700 capitalize">
                       {agent.role}
                     </span>
                   </td>

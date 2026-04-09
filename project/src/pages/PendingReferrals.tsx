@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Clock, Search, Filter } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -65,9 +65,9 @@ export default function PendingReferrals() {
   const getStatusBadgeColor = (status: string) => {
     const colors: Record<string, string> = {
       awaiting_police_report: 'bg-yellow-100 text-yellow-700',
-      awaiting_payment: 'bg-indigo-100 text-indigo-700',
+      awaiting_payment: 'bg-orange-100 text-orange-700',
       in_review: 'bg-blue-100 text-blue-700',
-      submitted: 'bg-indigo-100 text-indigo-700',
+      submitted: 'bg-orange-100 text-orange-700',
     };
     return colors[status] || 'bg-gray-100 text-gray-700';
   };

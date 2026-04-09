@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Bell, Menu, LogOut, User, Settings } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -73,7 +73,7 @@ export default function TopNav({ onMenuClick, onNavigate, onCloseSidebar }: TopN
           <Menu className="w-6 h-6 text-gray-700" />
         </button>
         <div className="flex items-center space-x-3">
-          <img src="/Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-10 h-10" />
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-10 h-10" />
           <h2 className="text-2xl font-bold text-gray-900">
             Welcome back, {agent?.full_name?.split(' ')[0] || 'Agent'}
           </h2>
@@ -124,7 +124,7 @@ export default function TopNav({ onMenuClick, onNavigate, onCloseSidebar }: TopN
                           notification.type === 'success' ? 'bg-green-500' :
                           notification.type === 'warning' ? 'bg-yellow-500' :
                           notification.type === 'error' ? 'bg-red-500' :
-                          'bg-indigo-500'
+                          'bg-orange-500'
                         }`}></div>
                         <div className="flex-1">
                           <p className="text-sm font-medium text-gray-900">{notification.title}</p>
@@ -142,7 +142,7 @@ export default function TopNav({ onMenuClick, onNavigate, onCloseSidebar }: TopN
                     onNavigate('notifications');
                     setShowNotifications(false);
                   }}
-                  className="text-sm text-purple-600 hover:text-purple-700 font-medium"
+                  className="text-sm text-orange-600 hover:text-orange-700 font-medium"
                 >
                   View all notifications
                 </button>
@@ -167,7 +167,7 @@ export default function TopNav({ onMenuClick, onNavigate, onCloseSidebar }: TopN
                 className="w-8 h-8 rounded-full"
               />
             ) : (
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-purple-600">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-orange-600">
                 <span className="text-gray-900 text-sm font-semibold">
                   {agent?.full_name?.charAt(0) || 'A'}
                 </span>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Shield, Heart, TrendingUp, Users, FileCheck, Phone, Mail, MapPin, CheckCircle, ArrowRight, Menu, X, Clock, Award, Headphones, Star, DollarSign, Briefcase, Activity, Calendar } from 'lucide-react';
 import AppointmentModal from '../components/AppointmentModal';
 import { useAuth } from '../contexts/AuthContext';
@@ -38,10 +38,10 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
   };
 
   const stats = [
-    { icon: Users, value: '200+', label: 'Clients Helped', color: 'from-purple-500 to-indigo-500' },
+    { icon: Users, value: '200+', label: 'Clients Helped', color: 'from-orange-500 to-orange-700' },
     { icon: DollarSign, value: 'GHC 2M+', label: 'Claims Secured', color: 'from-green-500 to-emerald-500' },
     { icon: Clock, value: '90 Days', label: 'Avg. Processing', color: 'from-blue-500 to-cyan-500' },
-    { icon: Star, value: '4.9/5', label: 'Client Rating', color: 'from-yellow-500 to-purple-500' },
+    { icon: Star, value: '4.9/5', label: 'Client Rating', color: 'from-yellow-500 to-orange-500' },
   ];
 
   const testimonials = [
@@ -49,7 +49,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       name: 'Yovi',
       location: 'Accident Victim, Accra',
       text: "I didn't even know insurance could pay for my treatment. A doctor at the hospital referred me to BearGuard, and they handled everything. I'm so grateful!",
-      color: 'from-purple-400 to-purple-600'
+      color: 'from-orange-400 to-orange-600'
     },
     {
       name: 'Abraham',
@@ -67,7 +67,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       name: 'Seraphine',
       location: 'Grateful Client, Tamale',
       text: "The police stressed me for a report, and I couldn't afford a medical report. BearGuard handled all of that and more. God bless them!",
-      color: 'from-purple-400 to-purple-600'
+      color: 'from-orange-400 to-orange-600'
     }
   ];
 
@@ -80,36 +80,36 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           <div className="flex justify-between items-center">
             <div className="flex items-center cursor-pointer group" onClick={() => scrollToSection('home')}>
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight transition-all duration-300 group-hover:text-purple-500">
-                  Bear<span className="text-purple-500 group-hover:text-white">Guard</span>
+                <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight transition-all duration-300 group-hover:text-orange-500">
+                  Bear<span className="text-orange-500 group-hover:text-white">Guard</span>
                 </span>
                 <span className="text-xs sm:text-sm text-gray-400 tracking-wider uppercase font-medium">Support Services</span>
               </div>
             </div>
 
             <div className="hidden lg:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-purple-500 transition-colors duration-200 font-semibold text-base relative group">
+              <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
                 Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-purple-500 transition-colors duration-200 font-semibold text-base relative group">
+              <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
                 About
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
-              <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-purple-500 transition-colors duration-200 font-semibold text-base relative group">
+              <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
                 Services
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
-              <button onClick={() => scrollToSection('why-us')} className="text-gray-300 hover:text-purple-500 transition-colors duration-200 font-semibold text-base relative group">
+              <button onClick={() => scrollToSection('why-us')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
                 Why Us
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-purple-500 transition-colors duration-200 font-semibold text-base relative group">
+              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-orange-500 transition-colors duration-200 font-semibold text-base relative group">
                 Contact
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
               </button>
               {user && agent ? (
-                <button onClick={() => onNavigate(agent.role === 'admin' ? 'admin-dashboard' : agent.role === 'manager' ? 'manager-dashboard' : 'referral-dashboard')} className="ml-4 px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 font-semibold text-base">
+                <button onClick={() => onNavigate(agent.role === 'admin' ? 'admin-dashboard' : agent.role === 'manager' ? 'manager-dashboard' : 'referral-dashboard')} className="ml-4 px-6 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200 font-semibold text-base">
                   Go to Dashboard
                 </button>
               ) : (
@@ -117,7 +117,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                   <button onClick={() => onNavigate('login')} className="ml-4 px-5 py-2 text-gray-300 hover:text-white font-semibold transition-colors duration-200 text-base border border-gray-600 hover:border-gray-500 rounded-lg">
                     Login
                   </button>
-                  <button onClick={() => onNavigate('signup')} className="px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 font-semibold text-base">
+                  <button onClick={() => onNavigate('signup')} className="px-6 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200 font-semibold text-base">
                     Join Network
                   </button>
                 </>
@@ -133,11 +133,11 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-slate-800 bg-slate-950 shadow-xl">
             <div className="px-4 py-4 space-y-2">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-purple-500 rounded-lg text-base transition-colors">Home</button>
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-purple-500 rounded-lg text-base transition-colors">About</button>
-              <button onClick={() => scrollToSection('services')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-purple-500 rounded-lg text-base transition-colors">Services</button>
-              <button onClick={() => scrollToSection('why-us')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-purple-500 rounded-lg text-base transition-colors">Why Us</button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-purple-500 rounded-lg text-base transition-colors">Contact</button>
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Home</button>
+              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">About</button>
+              <button onClick={() => scrollToSection('services')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Services</button>
+              <button onClick={() => scrollToSection('why-us')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Why Us</button>
+              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-3 text-gray-300 hover:bg-slate-800 hover:text-orange-500 rounded-lg text-base transition-colors">Contact</button>
               {user && agent ? (
                 <button onClick={() => onNavigate(agent.role === 'admin' ? 'admin-dashboard' : agent.role === 'manager' ? 'manager-dashboard' : 'referral-dashboard')} className="block w-full px-4 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 font-semibold text-base transition-colors">Go to Dashboard</button>
               ) : (
@@ -152,19 +152,19 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       </nav>
 
       <section id="home" className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-transparent to-blue-50/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-orange-50/20"></div>
 
         <div className="max-w-7xl mx-auto relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
                 <Shield className="w-4 h-4" />
                 <span>Trusted Claims Partner Since 2020</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
                 <span className="block text-gray-900">Had an Accident?</span>
-                <span className="block mt-4 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 bg-clip-text text-transparent">
+                <span className="block mt-4 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent">
                   We Fight For You
                 </span>
               </h1>
@@ -176,7 +176,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <button
                   onClick={() => setAppointmentModalOpen(true)}
-                  className="group px-8 py-4 bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 font-bold text-lg flex items-center justify-center space-x-2 transform hover:scale-105"
+                  className="group px-8 py-4 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 font-bold text-lg flex items-center justify-center space-x-2 transform hover:scale-105"
                 >
                   <Calendar className="w-6 h-6" />
                   <span>Book Free Consultation</span>
@@ -184,7 +184,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="px-8 py-4 bg-white text-purple-600 border-2 border-purple-500 rounded-xl hover:bg-purple-50 transition-all duration-300 shadow-lg font-bold text-lg transform hover:scale-105"
+                  className="px-8 py-4 bg-white text-orange-600 border-2 border-orange-500 rounded-xl hover:bg-orange-50 transition-all duration-300 shadow-lg font-bold text-lg transform hover:scale-105"
                 >
                   Learn More
                 </button>
@@ -194,19 +194,19 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative">
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <img
-                  src="/WhatsApp Image 2025-11-21 at 14.53.38_237cc202.jpg"
+                  src="WhatsApp Image 2025-11-21 at 14.53.38_237cc202.jpg"
                   alt="Professional consultation and support"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl"></div>
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-indigo-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-navy-500/20 rounded-full blur-3xl"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-r from-purple-600 via-purple-700 to-purple-600 text-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-600 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl"></div>
@@ -219,7 +219,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               return (
                 <div key={index} className="text-center transform hover:scale-110 transition-transform duration-300">
                   <div className={`w-16 h-16 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-xl`}>
-                    <Icon className="w-8 h-8 text-purple-600" />
+                    <Icon className="w-8 h-8 text-orange-600" />
                   </div>
                   <div className="text-4xl font-bold mb-2">{stat.value}</div>
                   <div className="text-orange-100 text-lg font-medium">{stat.label}</div>
@@ -280,9 +280,9 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
 
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 to-orange-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.39_4041563b.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.39_4041563b.jpg"
                 alt="Professional ready to assist with insurance claims"
                 className="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -404,7 +404,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-blue-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.39_d63d639e.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.39_d63d639e.jpg"
                 alt="Client receiving support and guidance"
                 className="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -448,7 +448,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         <div className="max-w-7xl mx-auto relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-lg font-bold mb-8 shadow-xl">
+              <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-lg font-bold mb-8 shadow-xl text-white">
                 <DollarSign className="w-6 h-6 mr-2" />
                 Referral Partner Program
               </div>
@@ -482,7 +482,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-6 bg-gradient-to-r from-white to-orange-200 rounded-3xl transform rotate-3 opacity-30 group-hover:opacity-40 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.38_5172faac.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.38_5172faac.jpg"
                 alt="Professional healthcare partner"
                 className="relative rounded-3xl shadow-2xl w-full h-[550px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -494,7 +494,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <div className="inline-block px-6 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-bold mb-6">
+            <div className="inline-block px-6 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-bold mb-6">
               TESTIMONIALS
             </div>
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Real Stories from Ghana</h2>
@@ -578,7 +578,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-300 to-orange-400 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
               <img
-                src="/WhatsApp Image 2025-11-21 at 14.53.39_fca7de1a.jpg"
+                src="WhatsApp Image 2025-11-21 at 14.53.39_fca7de1a.jpg"
                 alt="Patient receiving compassionate guidance from healthcare professional"
                 className="relative w-full max-w-3xl mx-auto rounded-2xl shadow-2xl mb-8 h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -600,14 +600,14 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       <footer className="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-navy-500 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <img
-                src="/Untitled-2 (12).png"
+                src="Untitled-2 (12).png"
                 alt="BearGuard Support Services"
                 className="h-40 w-auto mb-6"
               />

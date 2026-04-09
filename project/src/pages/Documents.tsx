@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FileText, Download, File } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
@@ -41,7 +41,7 @@ export default function Documents() {
       case 'claim_form':
         return <FileText className="w-8 h-8 text-blue-600" />;
       case 'manual':
-        return <File className="w-8 h-8 text-purple-600" />;
+        return <File className="w-8 h-8 text-orange-600" />;
       default:
         return <FileText className="w-8 h-8 text-gray-600" />;
     }
@@ -51,7 +51,7 @@ export default function Documents() {
     const badges: Record<string, string> = {
       claim_form: 'bg-blue-100 text-blue-700',
       application_letter: 'bg-green-100 text-green-700',
-      manual: 'bg-purple-100 text-purple-700',
+      manual: 'bg-orange-100 text-orange-700',
       other: 'bg-gray-100 text-gray-700',
     };
     return badges[fileType] || badges.other;
@@ -72,7 +72,7 @@ export default function Documents() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }

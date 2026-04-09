@@ -116,10 +116,10 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
           </div>
         ) : (
           <>
-            <div className="sticky top-0 bg-gradient-to-r from-purple-600 to-purple-700 p-6 rounded-t-3xl flex items-center justify-between">
+            <div className="sticky top-0 bg-gradient-to-r from-orange-600 to-orange-700 p-6 rounded-t-3xl flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-white mb-1">Book an Appointment</h2>
-                <p className="text-purple-100">Let's schedule a consultation</p>
+                <p className="text-orange-100">Let's schedule a consultation</p>
               </div>
               <button
                 onClick={onClose}
@@ -149,7 +149,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                   value={formData.full_name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -168,7 +168,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -186,7 +186,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all"
                     placeholder="0XX XXX XXXX"
                   />
                 </div>
@@ -204,7 +204,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                   value={formData.service_type}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all"
                 >
                   <option value="">Select a service</option>
                   {serviceTypes.map((service) => (
@@ -228,7 +228,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                     onChange={handleChange}
                     min={getTomorrowDate()}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all"
                   />
                 </div>
 
@@ -244,7 +244,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                     value={formData.appointment_time}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all"
                   >
                     <option value="">Select a time</option>
                     {timeSlots.map((slot) => (
@@ -266,7 +266,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-orange-100 outline-none transition-all resize-none"
                   placeholder="Tell us more about your situation..."
                 />
               </div>
@@ -282,7 +282,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg hover:shadow-xl font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 px-6 py-4 bg-gradient-to-r from-orange-600 to-orange-700 text-white rounded-xl hover:from-orange-700 hover:to-orange-800 transition-all shadow-lg hover:shadow-xl font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? 'Booking...' : 'Book Appointment'}
                 </button>

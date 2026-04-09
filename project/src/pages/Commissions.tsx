@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DollarSign, TrendingUp, Calendar } from 'lucide-react';
 import { supabase, Commission } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -107,7 +107,7 @@ export default function Commissions() {
   const getTypeBadgeColor = (type: string) => {
     const colors: Record<string, string> = {
       referral: 'bg-blue-100 text-blue-700',
-      renewal: 'bg-purple-100 text-purple-700',
+      renewal: 'bg-orange-100 text-orange-700',
       bonus: 'bg-amber-100 text-amber-700',
     };
     return colors[type] || colors.referral;
@@ -116,7 +116,7 @@ export default function Commissions() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -131,7 +131,7 @@ export default function Commissions() {
         <select
           value={selectedYear}
           onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-          className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
         >
           {[2024, 2025, 2026, 2027].map((year) => (
             <option key={year} value={year}>
@@ -142,13 +142,13 @@ export default function Commissions() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl p-6 text-white shadow-lg">
+        <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 text-white shadow-lg">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-purple-100 text-sm font-medium">Current Month</p>
-            <Calendar className="w-8 h-8 text-purple-200" />
+            <p className="text-orange-100 text-sm font-medium">Current Month</p>
+            <Calendar className="w-8 h-8 text-orange-200" />
           </div>
           <p className="text-4xl font-bold mb-1">{formatCurrency(currentMonthTotal)}</p>
-          <p className="text-purple-200 text-sm">{getMonthName(currentMonth)} {selectedYear}</p>
+          <p className="text-orange-200 text-sm">{getMonthName(currentMonth)} {selectedYear}</p>
         </div>
 
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -181,7 +181,7 @@ export default function Commissions() {
             monthlyTotals.map((monthly) => (
               <div
                 key={monthly.month}
-                className="border border-gray-200 rounded-xl p-4 hover:border-purple-300 transition-colors"
+                className="border border-gray-200 rounded-xl p-4 hover:border-orange-300 transition-colors"
               >
                 <p className="text-sm font-medium text-gray-600 mb-1">
                   {getMonthName(monthly.month)}

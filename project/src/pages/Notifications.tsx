@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Bell, Check, Trash2, AlertCircle, Info, CheckCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -149,7 +149,7 @@ export default function Notifications() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -180,7 +180,7 @@ export default function Notifications() {
             onClick={() => setFilter('all')}
             className={`px-4 py-2 rounded-xl font-medium transition-colors ${
               filter === 'all'
-                ? 'bg-purple-600 text-white'
+                ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
@@ -190,7 +190,7 @@ export default function Notifications() {
             onClick={() => setFilter('unread')}
             className={`px-4 py-2 rounded-xl font-medium transition-colors ${
               filter === 'unread'
-                ? 'bg-purple-600 text-white'
+                ? 'bg-orange-600 text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >

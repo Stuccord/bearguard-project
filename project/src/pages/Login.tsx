@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowLeft, Eye, EyeOff, Check } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -65,7 +65,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {onNavigate && (
           <button
@@ -78,7 +78,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
         )}
         <div className="bg-white rounded-3xl shadow-2xl p-8">
           <div className="flex flex-col items-center mb-8">
-            <img src="/Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mb-4" />
+            <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mb-4" />
             <h1 className="text-3xl font-bold text-gray-900">BearGuard</h1>
             <p className="text-gray-600 mt-2">
               {showResetForm ? 'Reset Your Password' : 'Referral Rep Portal'}
@@ -111,7 +111,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                   placeholder="agent@insurance.com"
                 />
               </div>
@@ -119,7 +119,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-orange-600 text-white py-3 rounded-xl font-semibold hover:bg-orange-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </button>
@@ -146,7 +146,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                 placeholder="agent@insurance.com"
               />
             </div>
@@ -161,7 +161,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full px-4 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full px-4 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                   placeholder="••••••••"
                 />
                 <button
@@ -177,7 +177,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-orange-600 text-white py-3 rounded-xl font-semibold hover:bg-orange-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
@@ -189,7 +189,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
                   setShowResetForm(true);
                   setError('');
                 }}
-                className="text-sm text-purple-600 hover:text-purple-700 font-medium"
+                className="text-sm text-orange-600 hover:text-orange-700 font-medium"
               >
                 Forgot Password?
               </button>
@@ -203,7 +203,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
                 Don't have an account?{' '}
                 <button
                   onClick={() => onNavigate('signup')}
-                  className="text-purple-600 hover:text-purple-700 font-semibold"
+                  className="text-orange-600 hover:text-orange-700 font-semibold"
                 >
                   Sign Up
                 </button>

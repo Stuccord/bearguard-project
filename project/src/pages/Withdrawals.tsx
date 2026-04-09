@@ -121,9 +121,9 @@ export default function Withdrawals() {
       case 'pending':
         return 'bg-yellow-100 text-yellow-800';
       case 'approved':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-orange-100 text-orange-800';
       case 'processing':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-orange-100 text-orange-800';
       case 'rejected':
         return 'bg-red-100 text-red-800';
       default:
@@ -156,7 +156,7 @@ export default function Withdrawals() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -171,7 +171,7 @@ export default function Withdrawals() {
         <button
           onClick={() => setShowRequestModal(true)}
           disabled={availableBalance <= 0}
-          className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="w-5 h-5" />
           Request Withdrawal
@@ -207,8 +207,8 @@ export default function Withdrawals() {
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <CheckCircle className="w-6 h-6 text-blue-600" />
+            <div className="p-3 bg-orange-100 rounded-lg">
+              <CheckCircle className="w-6 h-6 text-orange-600" />
             </div>
             <div>
               <p className="text-sm text-gray-600">Completed Withdrawals</p>
@@ -394,7 +394,7 @@ function WithdrawalRequestModal({ isOpen, onClose, availableBalance, paymentMeth
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               max={availableBalance}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               placeholder="Enter amount"
             />
           </div>
@@ -407,7 +407,7 @@ function WithdrawalRequestModal({ isOpen, onClose, availableBalance, paymentMeth
               required
               value={selectedMethod}
               onChange={(e) => setSelectedMethod(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             >
               <option value="">Select method</option>
               {paymentMethods.map((method: PaymentMethod) => (
@@ -433,7 +433,7 @@ function WithdrawalRequestModal({ isOpen, onClose, availableBalance, paymentMeth
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
+              className="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50"
             >
               {loading ? 'Submitting...' : 'Submit Request'}
             </button>
@@ -507,7 +507,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
               required
               value={methodType}
               onChange={(e) => setMethodType(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             >
               <option value="">Select type</option>
               <option value="bank_transfer">Bank Transfer</option>
@@ -526,7 +526,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
                   required
                   value={bankName}
                   onChange={(e) => setBankName(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="e.g., GCB Bank"
                 />
               </div>
@@ -537,7 +537,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
                   required
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="e.g., 1234567890"
                 />
               </div>
@@ -548,7 +548,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
                   required
                   value={accountName}
                   onChange={(e) => setAccountName(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="Account holder name"
                 />
               </div>
@@ -562,7 +562,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
                   required
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="e.g., 0244123456"
                 />
               </div>
@@ -573,7 +573,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
                   required
                   value={mobileName}
                   onChange={(e) => setMobileName(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="Registered name"
                 />
               </div>
@@ -586,7 +586,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
               id="isDefault"
               checked={isDefault}
               onChange={(e) => setIsDefault(e.target.checked)}
-              className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+              className="w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
             />
             <label htmlFor="isDefault" className="text-sm text-gray-700">
               Set as default payment method
@@ -604,7 +604,7 @@ function AddPaymentMethodModal({ isOpen, onClose, onSuccess }: any) {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
+              className="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50"
             >
               {loading ? 'Adding...' : 'Add Method'}
             </button>

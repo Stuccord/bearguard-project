@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   LayoutDashboard,
   UserPlus,
@@ -80,11 +80,11 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggleCo
   const menuItems = getMenuItems();
   return (
     <aside
-      className={`bg-purple-900 text-white transition-all duration-300 flex flex-col ${
+      className={`bg-slate-950 text-white transition-all duration-300 flex flex-col ${
         collapsed ? 'w-20' : 'w-64'
       }`}
     >
-      <div className="p-6 flex items-center justify-between border-b border-purple-800">
+      <div className="p-6 flex items-center justify-between border-b border-slate-800">
         {!collapsed && (
           <div className="flex items-center space-x-3">
             <h1 className="text-2xl font-bold text-white">BearGuard</h1>
@@ -98,7 +98,7 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggleCo
         )}
         <button
           onClick={onToggleCollapse}
-          className="p-2 hover:bg-purple-800 rounded-lg transition-colors"
+          className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
         >
           {collapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </button>
@@ -107,7 +107,7 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggleCo
       <nav className="flex-1 p-4 space-y-2">
         <button
           onClick={() => onNavigate('landing')}
-          className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-purple-800 hover:text-white transition-colors"
+          className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 hover:text-white transition-colors"
         >
           <Home className="w-5 h-5 flex-shrink-0" />
           {!collapsed && <span>Homepage</span>}
@@ -122,8 +122,8 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggleCo
               onClick={() => onNavigate(item.id)}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                 isActive
-                  ? 'bg-indigo-600 text-white shadow-lg font-semibold'
-                  : 'text-gray-400 hover:bg-purple-800 hover:text-white'
+                  ? 'bg-orange-600 text-white shadow-lg font-semibold'
+                  : 'text-gray-400 hover:bg-slate-800 hover:text-white'
               } ${collapsed ? 'justify-center' : ''}`}
               title={collapsed ? item.label : ''}
             >

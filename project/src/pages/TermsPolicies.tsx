@@ -1,5 +1,4 @@
-import React from 'react';
-import { Shield, DollarSign, Lock, AlertCircle, FileText, Users } from 'lucide-react';
+import { Shield, Lock, AlertCircle, FileText, Users } from 'lucide-react';
 
 export default function TermsPolicies() {
   return (
@@ -12,8 +11,8 @@ export default function TermsPolicies() {
       <div className="space-y-6">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
           <div className="flex items-start space-x-4 mb-6">
-            <div className="p-3 bg-purple-100 rounded-xl">
-              <Shield className="w-6 h-6 text-purple-600" />
+            <div className="p-3 bg-orange-100 rounded-xl">
+              <Shield className="w-6 h-6 text-orange-600" />
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Commission Structure</h2>
@@ -134,8 +133,8 @@ export default function TermsPolicies() {
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
           <div className="flex items-start space-x-4 mb-6">
-            <div className="p-3 bg-purple-100 rounded-xl">
-              <FileText className="w-6 h-6 text-purple-700" />
+            <div className="p-3 bg-orange-100 rounded-xl">
+              <FileText className="w-6 h-6 text-orange-700" />
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Case Processing Guidelines</h2>
@@ -170,8 +169,8 @@ export default function TermsPolicies() {
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
           <div className="flex items-start space-x-4 mb-6">
-            <div className="p-3 bg-indigo-100 rounded-xl">
-              <Users className="w-6 h-6 text-indigo-700" />
+            <div className="p-3 bg-orange-100 rounded-xl">
+              <Users className="w-6 h-6 text-orange-700" />
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Support & Assistance</h2>

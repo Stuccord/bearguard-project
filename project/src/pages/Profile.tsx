@@ -60,7 +60,7 @@ export default function Profile() {
       case 'manager':
         return 'bg-teal-100 text-teal-700';
       default:
-        return 'bg-indigo-100 text-indigo-700';
+        return 'bg-orange-600 text-orange-700';
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckCircle, Clock, DollarSign } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
@@ -67,8 +67,8 @@ export default function WithdrawalProcessing() {
   const getStatusBadge = (status: string) => {
     const badges: Record<string, { color: string; label: string }> = {
       pending: { color: 'bg-yellow-100 text-yellow-800', label: 'Pending' },
-      approved: { color: 'bg-indigo-100 text-indigo-800', label: 'Approved' },
-      processing: { color: 'bg-purple-100 text-purple-800', label: 'Processing' },
+      approved: { color: 'bg-orange-100 text-orange-800', label: 'Approved' },
+      processing: { color: 'bg-orange-100 text-orange-800', label: 'Processing' },
       completed: { color: 'bg-green-100 text-green-800', label: 'Completed' },
       rejected: { color: 'bg-red-100 text-red-800', label: 'Rejected' }
     };
@@ -116,7 +116,7 @@ export default function WithdrawalProcessing() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -155,8 +155,8 @@ export default function WithdrawalProcessing() {
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-indigo-100 rounded-lg">
-              <DollarSign className="w-6 h-6 text-indigo-600" />
+            <div className="p-3 bg-orange-100 rounded-lg">
+              <DollarSign className="w-6 h-6 text-orange-600" />
             </div>
             <div>
               <p className="text-sm text-gray-600">Total Requests</p>
@@ -175,7 +175,7 @@ export default function WithdrawalProcessing() {
                 onClick={() => setFilterStatus(status)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   filterStatus === status
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-orange-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -239,7 +239,7 @@ export default function WithdrawalProcessing() {
                           setSelectedWithdrawal(withdrawal);
                           setShowProcessModal(true);
                         }}
-                        className="text-purple-600 hover:text-purple-700 text-sm font-medium"
+                        className="text-orange-600 hover:text-orange-700 text-sm font-medium"
                       >
                         Process
                       </button>
@@ -352,7 +352,7 @@ function ProcessWithdrawalModal({ withdrawal, onClose, onSuccess }: any) {
           </div>
           <div className="flex justify-between">
             <span className="text-gray-600">Amount:</span>
-            <span className="font-semibold text-purple-600">
+            <span className="font-semibold text-orange-600">
               GHS {withdrawal.amount.toFixed(2)}
             </span>
           </div>
@@ -379,7 +379,7 @@ function ProcessWithdrawalModal({ withdrawal, onClose, onSuccess }: any) {
             <select
               value={action}
               onChange={(e) => setAction(e.target.value as any)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             >
               <option value="approve">Approve (Review Passed)</option>
               <option value="complete">Complete Payment (Mark as Paid)</option>
@@ -397,7 +397,7 @@ function ProcessWithdrawalModal({ withdrawal, onClose, onSuccess }: any) {
                 required
                 value={paymentReference}
                 onChange={(e) => setPaymentReference(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Transaction ID or reference number"
               />
             </div>
@@ -413,7 +413,7 @@ function ProcessWithdrawalModal({ withdrawal, onClose, onSuccess }: any) {
                 value={rejectionReason}
                 onChange={(e) => setRejectionReason(e.target.value)}
                 rows={3}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Explain why this request is being rejected"
               />
             </div>
@@ -427,7 +427,7 @@ function ProcessWithdrawalModal({ withdrawal, onClose, onSuccess }: any) {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={2}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               placeholder="Add any additional notes"
             />
           </div>
@@ -443,7 +443,7 @@ function ProcessWithdrawalModal({ withdrawal, onClose, onSuccess }: any) {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
+              className="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50"
             >
               {loading ? 'Processing...' : 'Confirm'}
             </button>

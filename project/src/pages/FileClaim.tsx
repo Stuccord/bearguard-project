@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, ArrowLeft, Upload, AlertCircle } from 'lucide-react';
+import { ArrowLeft, AlertCircle, FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -110,7 +110,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
     try {
       const claimNumber = `CLM-${Date.now().toString().slice(-8)}`;
 
-      const { data, error } = await supabase.from('claims').insert([
+      const { error } = await supabase.from('claims').insert([
         {
           claim_number: claimNumber,
           policy_id: formData.policy_id,
@@ -162,7 +162,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
       </div>
 
       {success && (
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start space-x-3">
+        <div className="bg-green-50 border border-orange-200 rounded-xl p-4 flex items-start space-x-3">
           <AlertCircle className="w-5 h-5 text-green-600 mt-0.5" />
           <div>
             <h3 className="font-semibold text-green-900">Claim filed successfully!</h3>
@@ -192,7 +192,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
             <select
               value={formData.policy_id}
               onChange={(e) => handlePolicyChange(e.target.value)}
-              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
                 errors.policy_id ? 'border-red-500' : 'border-gray-300'
               }`}
               disabled={loading}
@@ -221,7 +221,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
               value={formData.incident_date}
               onChange={(e) => setFormData({ ...formData, incident_date: e.target.value })}
               max={new Date().toISOString().split('T')[0]}
-              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
                 errors.incident_date ? 'border-red-500' : 'border-gray-300'
               }`}
               disabled={loading}
@@ -240,7 +240,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
               value={formData.claim_amount}
               onChange={(e) => setFormData({ ...formData, claim_amount: e.target.value })}
               placeholder="Enter claim amount"
-              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
                 errors.claim_amount ? 'border-red-500' : 'border-gray-300'
               }`}
               disabled={loading}
@@ -257,7 +257,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Provide detailed information about the incident and damages..."
               rows={6}
-              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none ${
+              className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none ${
                 errors.description ? 'border-red-500' : 'border-gray-300'
               }`}
               disabled={loading}
@@ -268,9 +268,9 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
             </p>
           </div>
 
-          <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
-            <h3 className="font-semibold text-indigo-900 mb-2">Important Information</h3>
-            <ul className="text-sm text-indigo-800 space-y-1 list-disc list-inside">
+          <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+            <h3 className="font-semibold text-orange-900 mb-2">Important Information</h3>
+            <ul className="text-sm text-orange-800 space-y-1 list-disc list-inside">
               <li>Ensure all information provided is accurate and complete</li>
               <li>Claims are reviewed within 5-7 business days</li>
               <li>You will be notified of the claim status via email</li>
@@ -282,7 +282,7 @@ export default function FileClaim({ onNavigate }: { onNavigate: (page: string) =
             <button
               type="submit"
               disabled={loading || policies.length === 0}
-              className="flex-1 bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="flex-1 bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {loading ? (
                 <>

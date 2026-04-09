@@ -47,8 +47,8 @@ function AppContent() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
         <div className="text-center max-w-lg w-full bg-white p-12 rounded-3xl shadow-xl border border-gray-100">
           <div className="mb-8 flex justify-center">
-            <div className="w-20 h-20 bg-amber-50 rounded-2xl flex items-center justify-center">
-              <Shield className="w-10 h-10 text-amber-500" />
+            <div className="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center">
+              <Shield className="w-10 h-10 text-orange-500" />
             </div>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight text-center">Connection Required</h1>
@@ -59,11 +59,11 @@ function AppContent() {
           <div className="space-y-3 mb-8 text-left bg-gray-50 p-6 rounded-2xl border border-gray-100 font-mono text-sm leading-6">
             <p className="flex items-center gap-2">
               <div className={`w-1.5 h-1.5 rounded-full ${import.meta.env.VITE_SUPABASE_URL ? 'bg-green-500' : 'bg-red-500'}`}/> 
-              VITE_SUPABASE_URL: {import.meta.env.VITE_SUPABASE_URL ? '✅ Connected' : '❌ Missing'}
+              VITE_SUPABASE_URL: {import.meta.env.VITE_SUPABASE_URL ? `✅ Connected (${import.meta.env.VITE_SUPABASE_URL.substring(0, 15)}...)` : '❌ Missing'}
             </p>
             <p className="flex items-center gap-2">
               <div className={`w-1.5 h-1.5 rounded-full ${import.meta.env.VITE_SUPABASE_ANON_KEY ? 'bg-green-500' : 'bg-red-500'}`}/> 
-              VITE_SUPABASE_ANON_KEY: {import.meta.env.VITE_SUPABASE_ANON_KEY ? '✅ Connected' : '❌ Missing'}
+              VITE_SUPABASE_ANON_KEY: {import.meta.env.VITE_SUPABASE_ANON_KEY ? `✅ Connected (Starts with: ${import.meta.env.VITE_SUPABASE_ANON_KEY.substring(0, 8)}...)` : '❌ Missing'}
             </p>
           </div>
 
@@ -71,7 +71,7 @@ function AppContent() {
             href="https://github.com/Stuccord/bearguard-project/settings/secrets/actions" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white rounded-2xl font-semibold hover:bg-amber-600 transition-all shadow-lg shadow-amber-200 active:scale-95"
+            className="w-full inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white rounded-2xl font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-200 active:scale-95"
           >
             Add Secrets to GitHub
             <ExternalLink className="ml-2 w-4 h-4" />
@@ -111,7 +111,7 @@ function AppContent() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <img src="/Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-32 h-32 mx-auto mb-4 animate-pulse" />
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-32 h-32 mx-auto mb-4 animate-pulse" />
           <div className="flex justify-center space-x-2">
             <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
             <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
@@ -139,7 +139,7 @@ function AppContent() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
         <div className="text-center max-w-sm w-full bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-          <img src="/Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mx-auto mb-6 animate-pulse" />
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mx-auto mb-6 animate-pulse" />
           <h2 className="text-xl font-bold text-gray-900 mb-2">Setting up your profile</h2>
           <p className="text-gray-600 mb-6">This will only take a moment.</p>
           
@@ -159,7 +159,7 @@ function AppContent() {
           <div className="space-y-3">
             <button 
               onClick={() => window.location.reload()}
-              className="w-full py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all font-semibold shadow-lg shadow-purple-200 active:scale-95"
+              className="w-full py-3 bg-orange-600 text-white rounded-xl hover:bg-orange-700 transition-all font-semibold shadow-lg shadow-orange-200 active:scale-95"
             >
               Retry Setup
             </button>

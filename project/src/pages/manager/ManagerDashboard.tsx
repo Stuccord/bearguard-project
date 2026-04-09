@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Users, Shield, DollarSign, TrendingUp, Award, Target } from 'lucide-react';
 import StatCard from '../../components/StatCard';
 import { supabase } from '../../lib/supabase';
@@ -97,7 +97,7 @@ export default function ManagerDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -114,43 +114,43 @@ export default function ManagerDashboard() {
           title="Team Size"
           value={stats.totalAgents}
           icon={Users}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Total Clients"
           value={stats.totalClients}
           icon={Target}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Active Policies"
           value={stats.activePolicies}
           icon={Shield}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Monthly Commissions"
           value={formatCurrency(stats.monthlyCommissions)}
           icon={DollarSign}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Pending Claims"
           value={stats.pendingClaims}
           icon={TrendingUp}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Team Performance"
           value={`${stats.teamPerformance}%`}
           icon={Award}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
       </div>
 
@@ -161,8 +161,8 @@ export default function ManagerDashboard() {
             {topAgents.map((agent, index) => (
               <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                    <span className="text-purple-700 font-semibold">{index + 1}</span>
+                  <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                    <span className="text-orange-700 font-semibold">{index + 1}</span>
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">{agent.agent_name}</div>
@@ -172,7 +172,7 @@ export default function ManagerDashboard() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-bold text-purple-700">{formatCurrency(agent.commissions_total)}</div>
+                  <div className="font-bold text-orange-700">{formatCurrency(agent.commissions_total)}</div>
                   <div className="text-xs text-gray-500">Total commissions</div>
                 </div>
               </div>
@@ -183,33 +183,33 @@ export default function ManagerDashboard() {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Team Insights</h2>
           <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg">
+            <div className="p-4 bg-orange-50 rounded-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-purple-900">Client Acquisition Rate</span>
-                <span className="text-sm font-bold text-purple-700">+12%</span>
+                <span className="text-sm font-medium text-orange-900">Client Acquisition Rate</span>
+                <span className="text-sm font-bold text-orange-700">+12%</span>
               </div>
-              <div className="w-full bg-purple-200 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full" style={{ width: '68%' }}></div>
+              <div className="w-full bg-orange-200 rounded-full h-2">
+                <div className="bg-orange-600 h-2 rounded-full" style={{ width: '68%' }}></div>
               </div>
             </div>
 
-            <div className="p-4 bg-indigo-50 rounded-lg">
+            <div className="p-4 bg-orange-50 rounded-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-indigo-900">Policy Conversion</span>
-                <span className="text-sm font-bold text-indigo-700">78%</span>
+                <span className="text-sm font-medium text-orange-900">Policy Conversion</span>
+                <span className="text-sm font-bold text-orange-700">78%</span>
               </div>
-              <div className="w-full bg-indigo-200 rounded-full h-2">
-                <div className="bg-indigo-600 h-2 rounded-full" style={{ width: '78%' }}></div>
+              <div className="w-full bg-orange-200 rounded-full h-2">
+                <div className="bg-orange-600 h-2 rounded-full" style={{ width: '78%' }}></div>
               </div>
             </div>
 
-            <div className="p-4 bg-purple-50 rounded-lg">
+            <div className="p-4 bg-orange-50 rounded-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-purple-900">Customer Satisfaction</span>
-                <span className="text-sm font-bold text-purple-700">92%</span>
+                <span className="text-sm font-medium text-orange-900">Customer Satisfaction</span>
+                <span className="text-sm font-bold text-orange-700">92%</span>
               </div>
-              <div className="w-full bg-purple-200 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full" style={{ width: '92%' }}></div>
+              <div className="w-full bg-orange-200 rounded-full h-2">
+                <div className="bg-orange-600 h-2 rounded-full" style={{ width: '92%' }}></div>
               </div>
             </div>
           </div>
