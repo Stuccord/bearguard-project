@@ -11,7 +11,7 @@ interface NotificationPreferences {
 
 export default function Settings() {
   const { agent } = useAuth();
-  const [currentPassword, setCurrentPassword] = useState('');
+
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPasswords, setShowPasswords] = useState(false);
@@ -100,7 +100,6 @@ export default function Settings() {
       if (error) throw error;
 
       setMessage('Password updated successfully!');
-      setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
     } catch (error: any) {
@@ -126,8 +125,8 @@ export default function Settings() {
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
         <div className="flex items-center space-x-3 mb-6">
-          <div className="p-2 bg-purple-100 rounded-lg">
-            <Lock className="w-6 h-6 text-purple-600" />
+          <div className="p-2 bg-orange-100 rounded-lg">
+            <Lock className="w-6 h-6 text-orange-600" />
           </div>
           <div>
             <h2 className="text-xl font-bold text-gray-900">Change Password</h2>
@@ -148,7 +147,7 @@ export default function Settings() {
                 onChange={(e) => setNewPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Enter new password"
               />
               <button
@@ -174,7 +173,7 @@ export default function Settings() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Confirm new password"
               />
             </div>
@@ -183,7 +182,7 @@ export default function Settings() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
+            className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50"
           >
             {loading ? 'Updating...' : 'Update Password'}
           </button>
@@ -192,8 +191,8 @@ export default function Settings() {
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
         <div className="flex items-center space-x-3 mb-6">
-          <div className="p-2 bg-indigo-100 rounded-lg">
-            <Bell className="w-6 h-6 text-indigo-600" />
+          <div className="p-2 bg-orange-100 rounded-lg">
+            <Bell className="w-6 h-6 text-orange-600" />
           </div>
           <div>
             <h2 className="text-xl font-bold text-gray-900">Notifications</h2>
@@ -215,7 +214,7 @@ export default function Settings() {
                 onChange={() => handleNotificationToggle('email_notifications')}
                 disabled={notifLoading}
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
             </label>
           </div>
 
@@ -232,7 +231,7 @@ export default function Settings() {
                 onChange={() => handleNotificationToggle('commission_alerts')}
                 disabled={notifLoading}
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
             </label>
           </div>
 
@@ -249,7 +248,7 @@ export default function Settings() {
                 onChange={() => handleNotificationToggle('policy_reminders')}
                 disabled={notifLoading}
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
             </label>
           </div>
         </div>
@@ -257,8 +256,8 @@ export default function Settings() {
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
         <div className="flex items-center space-x-3 mb-6">
-          <div className="p-2 bg-purple-100 rounded-lg">
-            <Shield className="w-6 h-6 text-purple-600" />
+          <div className="p-2 bg-orange-100 rounded-lg">
+            <Shield className="w-6 h-6 text-orange-600" />
           </div>
           <div>
             <h2 className="text-xl font-bold text-gray-900">Account Information</h2>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Download, BarChart3, TrendingUp, Users, FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -155,7 +155,7 @@ Amount,Status,Date Earned,Payment Status
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -169,7 +169,7 @@ Amount,Status,Date Earned,Payment Status
         </div>
         <button
           onClick={exportToCSV}
-          className="px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl flex items-center space-x-2"
+          className="px-6 py-3 bg-orange-600 text-white rounded-xl font-semibold hover:bg-orange-700 transition-colors shadow-lg hover:shadow-xl flex items-center space-x-2"
         >
           <Download className="w-5 h-5" />
           <span>Export to CSV</span>
@@ -182,7 +182,7 @@ Amount,Status,Date Earned,Payment Status
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
           >
             <option value="this-month">This Month</option>
             <option value="this-year">This Year</option>
@@ -213,10 +213,10 @@ Amount,Status,Date Earned,Payment Status
             <p className="text-sm text-gray-600">{stats.activeRate.toFixed(1)}% Active</p>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border border-orange-200">
             <div className="flex items-center justify-between mb-4">
-              <BarChart3 className="w-8 h-8 text-purple-600" />
-              <span className="text-xs font-semibold text-purple-600 bg-white px-2 py-1 rounded-full">
+              <BarChart3 className="w-8 h-8 text-orange-600" />
+              <span className="text-xs font-semibold text-orange-600 bg-white px-2 py-1 rounded-full">
                 CLAIMS
               </span>
             </div>
@@ -224,10 +224,10 @@ Amount,Status,Date Earned,Payment Status
             <p className="text-sm text-gray-600">{stats.approvalRate.toFixed(1)}% Approved</p>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border border-orange-200">
             <div className="flex items-center justify-between mb-4">
-              <TrendingUp className="w-8 h-8 text-purple-600" />
-              <span className="text-xs font-semibold text-purple-600 bg-white px-2 py-1 rounded-full">
+              <TrendingUp className="w-8 h-8 text-orange-600" />
+              <span className="text-xs font-semibold text-orange-600 bg-white px-2 py-1 rounded-full">
                 EARNINGS
               </span>
             </div>
@@ -259,7 +259,7 @@ Amount,Status,Date Earned,Payment Status
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="bg-purple-600 h-2 rounded-full transition-all"
+                    className="bg-orange-600 h-2 rounded-full transition-all"
                     style={{ width: `${stats.totalPolicies > 0 ? item.percentage : 0}%` }}
                   ></div>
                 </div>
@@ -285,7 +285,7 @@ Amount,Status,Date Earned,Payment Status
             </div>
             <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
               <span className="text-sm text-gray-600">Client Satisfaction</span>
-              <span className="text-lg font-bold text-purple-600">4.8/5.0</span>
+              <span className="text-lg font-bold text-orange-600">4.8/5.0</span>
             </div>
           </div>
         </div>

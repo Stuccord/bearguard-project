@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, Filter, Eye, Edit, Trash2, RefreshCw } from 'lucide-react';
 import { supabase, Policy } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -101,7 +101,7 @@ export default function Policies() {
   const getStatusBadgeColor = (status: string) => {
     const colors: Record<string, string> = {
       active: 'bg-green-100 text-green-700',
-      pending: 'bg-indigo-100 text-indigo-700',
+      pending: 'bg-orange-100 text-orange-700',
       expired: 'bg-red-100 text-red-700',
       cancelled: 'bg-gray-100 text-gray-700',
     };
@@ -111,7 +111,7 @@ export default function Policies() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -132,7 +132,7 @@ export default function Policies() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by client name, policy number, or type..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             />
           </div>
 
@@ -142,7 +142,7 @@ export default function Policies() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -154,7 +154,7 @@ export default function Policies() {
 
             <button
               onClick={fetchPolicies}
-              className="px-4 py-3 bg-purple-100 text-purple-600 rounded-xl hover:bg-purple-200 transition-colors flex items-center space-x-2"
+              className="px-4 py-3 bg-orange-100 text-orange-600 rounded-xl hover:bg-orange-200 transition-colors flex items-center space-x-2"
             >
               <RefreshCw className="w-5 h-5" />
               <span>Refresh</span>
@@ -228,13 +228,13 @@ export default function Policies() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex items-center space-x-2">
                         <button
-                          className="p-2 hover:bg-indigo-50 rounded-lg text-indigo-600 transition-colors"
+                          className="p-2 hover:bg-orange-50 rounded-lg text-orange-600 transition-colors"
                           title="View"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         <button
-                          className="p-2 hover:bg-purple-50 rounded-lg text-purple-600 transition-colors"
+                          className="p-2 hover:bg-orange-700 rounded-lg text-orange-600 transition-colors"
                           title="Edit"
                         >
                           <Edit className="w-4 h-4" />

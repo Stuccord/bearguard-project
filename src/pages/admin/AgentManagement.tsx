@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { UserPlus, Search, MoreVertical, Edit, Trash2, CheckCircle, XCircle, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { UserPlus, Search, Edit, Trash2, CheckCircle, XCircle, X } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -170,7 +170,7 @@ export default function AgentManagement() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -184,7 +184,7 @@ export default function AgentManagement() {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
         >
           <UserPlus className="w-5 h-5" />
           <span>Add New User</span>
@@ -218,7 +218,7 @@ export default function AgentManagement() {
                   value={newUser.fullName}
                   onChange={(e) => setNewUser({ ...newUser, fullName: e.target.value })}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="John Doe"
                 />
               </div>
@@ -230,7 +230,7 @@ export default function AgentManagement() {
                   value={newUser.email}
                   onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="john@example.com"
                 />
               </div>
@@ -243,7 +243,7 @@ export default function AgentManagement() {
                   onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
                   required
                   minLength={6}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="Minimum 6 characters"
                 />
               </div>
@@ -253,7 +253,7 @@ export default function AgentManagement() {
                 <select
                   value={newUser.role}
                   onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
                   <option value="agent">Agent</option>
                   <option value="manager">Manager</option>
@@ -269,7 +269,7 @@ export default function AgentManagement() {
                   type="tel"
                   value={newUser.phone}
                   onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="+233 123 456 789"
                 />
               </div>
@@ -285,7 +285,7 @@ export default function AgentManagement() {
                 <button
                   type="submit"
                   disabled={createLoading}
-                  className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50"
                 >
                   {createLoading ? 'Creating...' : 'Create User'}
                 </button>
@@ -304,7 +304,7 @@ export default function AgentManagement() {
               placeholder="Search agents by name or email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -346,7 +346,7 @@ export default function AgentManagement() {
                     <select
                       value={agent.role}
                       onChange={(e) => updateAgentRole(agent.id, e.target.value)}
-                      className="text-xs font-semibold rounded-lg px-3 py-1.5 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent capitalize cursor-pointer"
+                      className="text-xs font-semibold rounded-lg px-3 py-1.5 border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent capitalize cursor-pointer"
                     >
                       <option value="agent">Agent</option>
                       <option value="manager">Manager</option>
@@ -378,7 +378,7 @@ export default function AgentManagement() {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => handleEditAgent(agent)}
-                        className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                        className="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
                         title="Edit agent"
                       >
                         <Edit className="w-4 h-4" />
@@ -420,7 +420,7 @@ export default function AgentManagement() {
                   value={editUser.fullName}
                   onChange={(e) => setEditUser({ ...editUser, fullName: e.target.value })}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 />
               </div>
 
@@ -430,7 +430,7 @@ export default function AgentManagement() {
                   type="tel"
                   value={editUser.phone}
                   onChange={(e) => setEditUser({ ...editUser, phone: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="+233 123 456 789"
                 />
               </div>
@@ -450,7 +450,7 @@ export default function AgentManagement() {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  className="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
                 >
                   Update Agent
                 </button>

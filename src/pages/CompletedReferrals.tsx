@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { CheckCircle, Search, Download } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { CheckCircle, Search } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -68,7 +68,7 @@ export default function CompletedReferrals() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -95,7 +95,7 @@ export default function CompletedReferrals() {
               placeholder="Search by case number, client name, or hospital..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
             />
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function CompletedReferrals() {
                 filteredReferrals.map((referral) => (
                   <tr key={referral.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-purple-600">{referral.case_number}</div>
+                      <div className="text-sm font-medium text-orange-600">{referral.case_number}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900">{referral.client_name}</div>

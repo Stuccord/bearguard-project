@@ -47,8 +47,8 @@ function AppContent() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
         <div className="text-center max-w-lg w-full bg-white p-12 rounded-3xl shadow-xl border border-gray-100">
           <div className="mb-8 flex justify-center">
-            <div className="w-20 h-20 bg-amber-50 rounded-2xl flex items-center justify-center">
-              <Shield className="w-10 h-10 text-amber-500" />
+            <div className="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center">
+              <Shield className="w-10 h-10 text-orange-500" />
             </div>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight text-center">Connection Required</h1>
@@ -71,7 +71,7 @@ function AppContent() {
             href="https://github.com/Stuccord/bearguard-project/settings/secrets/actions" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white rounded-2xl font-semibold hover:bg-amber-600 transition-all shadow-lg shadow-amber-200 active:scale-95"
+            className="w-full inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white rounded-2xl font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-200 active:scale-95"
           >
             Add Secrets to GitHub
             <ExternalLink className="ml-2 w-4 h-4" />
@@ -159,7 +159,7 @@ function AppContent() {
           <div className="space-y-3">
             <button 
               onClick={() => window.location.reload()}
-              className="w-full py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all font-semibold shadow-lg shadow-purple-200 active:scale-95"
+              className="w-full py-3 bg-orange-600 text-white rounded-xl hover:bg-orange-700 transition-all font-semibold shadow-lg shadow-orange-200 active:scale-95"
             >
               Retry Setup
             </button>

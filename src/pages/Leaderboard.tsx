@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Trophy, TrendingUp, Award, Star } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
@@ -80,7 +80,7 @@ export default function Leaderboard() {
   const getMedalIcon = (rank: number) => {
     switch (rank) {
       case 1:
-        return <Trophy className="w-8 h-8 text-purple-500" />;
+        return <Trophy className="w-8 h-8 text-orange-500" />;
       case 2:
         return <Award className="w-8 h-8 text-gray-400" />;
       case 3:

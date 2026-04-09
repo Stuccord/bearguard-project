@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Users, Shield, Clock, DollarSign } from 'lucide-react';
 import StatCard from '../components/StatCard';
 import { supabase } from '../lib/supabase';
@@ -125,7 +125,7 @@ export default function Dashboard() {
   const getStatusBadgeColor = (status: string) => {
     const colors: Record<string, string> = {
       active: 'bg-green-100 text-green-700',
-      pending: 'bg-indigo-100 text-indigo-700',
+      pending: 'bg-orange-100 text-orange-700',
       expired: 'bg-red-100 text-red-700',
       cancelled: 'bg-gray-100 text-gray-700',
     };
@@ -135,7 +135,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -152,29 +152,29 @@ export default function Dashboard() {
           title="Total Clients Referred"
           value={stats.totalClients}
           icon={Users}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Active Policies"
           value={stats.activePolicies}
           icon={Shield}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Pending Items"
           value={stats.pendingItems}
           icon={Clock}
-          iconBgColor="bg-purple-100"
-          iconColor="text-purple-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Monthly Commission"
           value={formatCurrency(stats.monthlyCommission)}
           icon={DollarSign}
-          iconBgColor="bg-indigo-100"
-          iconColor="text-indigo-600"
+          iconBgColor="bg-orange-100"
+          iconColor="text-orange-600"
         />
       </div>
 

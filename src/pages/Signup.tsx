@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowLeft, Mail, Lock, User, Phone, Building, Eye, EyeOff, Check } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
@@ -96,7 +96,7 @@ export default function Signup({ onNavigate }: SignupProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button
           onClick={() => onNavigate('landing')}
@@ -145,7 +145,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                     required
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="John Doe"
                   />
                 </div>
@@ -162,7 +162,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -179,7 +179,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="050 123 4567"
                   />
                 </div>
@@ -195,7 +195,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                     type="text"
                     value={formData.hospitalAffiliation}
                     onChange={(e) => setFormData({ ...formData, hospitalAffiliation: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="Ridge Hospital"
                   />
                 </div>
@@ -212,7 +212,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                     required
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="••••••••"
                   />
                   <button
@@ -239,7 +239,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                     required
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="••••••••"
                   />
                   <button
@@ -255,7 +255,7 @@ export default function Signup({ onNavigate }: SignupProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Creating Account...' : 'Create Account'}
               </button>
@@ -266,7 +266,7 @@ export default function Signup({ onNavigate }: SignupProps) {
                 Already have an account?{' '}
                 <button
                   onClick={() => onNavigate('login')}
-                  className="text-purple-600 hover:text-purple-700 font-semibold"
+                  className="text-orange-600 hover:text-orange-700 font-semibold"
                 >
                   Login
                 </button>

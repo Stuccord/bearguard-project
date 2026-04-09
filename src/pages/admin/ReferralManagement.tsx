@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, Filter, Edit2, Save, X } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
@@ -107,9 +107,9 @@ export default function ReferralManagement() {
   const getStatusBadgeColor = (status: string) => {
     const colors: Record<string, string> = {
       awaiting_police_report: 'bg-yellow-100 text-yellow-700',
-      awaiting_payment: 'bg-purple-100 text-purple-700',
+      awaiting_payment: 'bg-orange-100 text-orange-700',
       in_review: 'bg-fuchsia-100 text-fuchsia-700',
-      submitted: 'bg-indigo-100 text-indigo-700',
+      submitted: 'bg-orange-100 text-orange-700',
       paid: 'bg-green-100 text-green-700',
     };
     return colors[status] || 'bg-gray-100 text-gray-700';
@@ -133,7 +133,7 @@ export default function ReferralManagement() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -154,7 +154,7 @@ export default function ReferralManagement() {
               placeholder="Search by case number, client name, or rep name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             />
           </div>
           <div className="relative">
@@ -162,7 +162,7 @@ export default function ReferralManagement() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="pl-10 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white"
+              className="pl-10 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent appearance-none bg-white"
             >
               <option value="all">All Statuses</option>
               <option value="awaiting_police_report">Awaiting Police Report</option>
@@ -207,7 +207,7 @@ export default function ReferralManagement() {
                   {editingId === referral.id ? (
                     <>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-purple-900">{referral.case_number}</div>
+                        <div className="text-sm font-medium text-orange-900">{referral.case_number}</div>
                         <div className="text-xs text-gray-500">{formatDate(referral.created_at)}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -279,7 +279,7 @@ export default function ReferralManagement() {
                   ) : (
                     <>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-purple-900">{referral.case_number}</div>
+                        <div className="text-sm font-medium text-orange-900">{referral.case_number}</div>
                         <div className="text-xs text-gray-500">{formatDate(referral.created_at)}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -309,7 +309,7 @@ export default function ReferralManagement() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <button
                           onClick={() => handleEdit(referral)}
-                          className="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
+                          className="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>

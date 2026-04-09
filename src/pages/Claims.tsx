@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, Filter, RefreshCw, CheckCircle, XCircle, Clock, Plus } from 'lucide-react';
 import { supabase, Claim } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -119,7 +119,7 @@ export default function Claims({ onNavigate }: ClaimsProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -134,7 +134,7 @@ export default function Claims({ onNavigate }: ClaimsProps) {
         {onNavigate && (
           <button
             onClick={() => onNavigate('file-claim')}
-            className="bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors flex items-center space-x-2"
+            className="bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-700 transition-colors flex items-center space-x-2"
           >
             <Plus className="w-5 h-5" />
             <span>File New Claim</span>
@@ -147,9 +147,9 @@ export default function Claims({ onNavigate }: ClaimsProps) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-600 text-sm font-medium mb-1">Pending Claims</p>
-              <p className="text-3xl font-bold text-purple-600">{statusCounts.pending}</p>
+              <p className="text-3xl font-bold text-orange-600">{statusCounts.pending}</p>
             </div>
-            <Clock className="w-10 h-10 text-purple-600" />
+            <Clock className="w-10 h-10 text-orange-600" />
           </div>
         </div>
 
@@ -183,7 +183,7 @@ export default function Claims({ onNavigate }: ClaimsProps) {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by client name, claim number, or policy..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             />
           </div>
 
@@ -193,7 +193,7 @@ export default function Claims({ onNavigate }: ClaimsProps) {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -204,7 +204,7 @@ export default function Claims({ onNavigate }: ClaimsProps) {
 
             <button
               onClick={fetchClaims}
-              className="px-4 py-3 bg-purple-100 text-purple-600 rounded-xl hover:bg-purple-200 transition-colors flex items-center space-x-2"
+              className="px-4 py-3 bg-orange-100 text-orange-600 rounded-xl hover:bg-orange-200 transition-colors flex items-center space-x-2"
             >
               <RefreshCw className="w-5 h-5" />
               <span>Refresh</span>

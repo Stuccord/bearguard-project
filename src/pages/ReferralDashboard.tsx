@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Users, Clock, CheckCircle, DollarSign } from 'lucide-react';
 import StatCard from '../components/StatCard';
 import { supabase } from '../lib/supabase';
@@ -112,9 +112,9 @@ export default function ReferralDashboard() {
   const getStatusBadgeColor = (status: string) => {
     const colors: Record<string, string> = {
       awaiting_police_report: 'bg-yellow-100 text-yellow-700',
-      awaiting_payment: 'bg-indigo-100 text-indigo-700',
+      awaiting_payment: 'bg-orange-100 text-orange-700',
       in_review: 'bg-blue-100 text-blue-700',
-      submitted: 'bg-indigo-100 text-indigo-700',
+      submitted: 'bg-orange-100 text-orange-700',
       paid: 'bg-green-100 text-green-700',
     };
     return colors[status] || 'bg-gray-100 text-gray-700';

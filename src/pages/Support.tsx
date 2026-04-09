@@ -1,5 +1,4 @@
-import React from 'react';
-import { BookOpen, Mail, Phone, MessageCircle, FileQuestion, Video } from 'lucide-react';
+import { Phone, Mail, Video, BookOpen, FileQuestion, MessageCircle } from 'lucide-react';
 
 export default function Support() {
   return (
@@ -21,8 +20,8 @@ export default function Support() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow cursor-pointer">
-          <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <Video className="w-6 h-6 text-purple-600" />
+          <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+            <Video className="w-6 h-6 text-orange-600" />
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-2">Video Tutorials</h3>
           <p className="text-sm text-gray-600">
@@ -51,7 +50,7 @@ export default function Support() {
             <div>
               <h4 className="font-semibold text-gray-900 mb-1">Email Support</h4>
               <p className="text-sm text-gray-600 mb-2">Get help via email within 24 hours</p>
-              <a href="mailto:support@bearguard.com" className="text-sm text-purple-600 hover:underline">
+              <a href="mailto:support@bearguard.com" className="text-sm text-orange-600 hover:underline">
                 support@bearguard.com
               </a>
             </div>
@@ -64,20 +63,20 @@ export default function Support() {
             <div>
               <h4 className="font-semibold text-gray-900 mb-1">Phone Support</h4>
               <p className="text-sm text-gray-600 mb-2">Call us Monday to Friday, 9AM - 5PM</p>
-              <a href="tel:+233202525255" className="text-sm text-purple-600 hover:underline">
+              <a href="tel:+233202525255" className="text-sm text-orange-600 hover:underline">
                 +233 20 252 5255
               </a>
             </div>
           </div>
 
           <div className="flex items-start space-x-4">
-            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <MessageCircle className="w-5 h-5 text-purple-600" />
+            <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <MessageCircle className="w-5 h-5 text-orange-600" />
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 mb-1">Live Chat</h4>
               <p className="text-sm text-gray-600 mb-2">Chat with our support team instantly</p>
-              <button className="text-sm text-purple-600 hover:underline">Start Chat</button>
+              <button className="text-sm text-orange-600 hover:underline">Start Chat</button>
             </div>
           </div>
         </div>
@@ -87,7 +86,7 @@ export default function Support() {
         <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Start Guide</h2>
         <div className="space-y-4">
           <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+            <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
               1
             </div>
             <div>
@@ -100,7 +99,7 @@ export default function Support() {
           </div>
 
           <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+            <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
               2
             </div>
             <div>
@@ -113,7 +112,7 @@ export default function Support() {
           </div>
 
           <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+            <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
               3
             </div>
             <div>
@@ -125,7 +124,7 @@ export default function Support() {
           </div>
 
           <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+            <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
               4
             </div>
             <div>

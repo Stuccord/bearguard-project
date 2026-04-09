@@ -103,8 +103,8 @@ export default function NewClient() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex items-center space-x-3">
-        <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-          <UserPlus className="w-6 h-6 text-purple-600" />
+        <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+          <UserPlus className="w-6 h-6 text-orange-600" />
         </div>
         <div>
           <h1 className="text-3xl font-bold text-gray-900">New Client Referral</h1>
@@ -133,7 +133,7 @@ export default function NewClient() {
                 value={clientData.full_name}
                 onChange={(e) => setClientData({ ...clientData, full_name: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="John Doe"
               />
             </div>
@@ -145,7 +145,7 @@ export default function NewClient() {
                 value={clientData.email}
                 onChange={(e) => setClientData({ ...clientData, email: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="john@example.com"
               />
             </div>
@@ -157,7 +157,7 @@ export default function NewClient() {
                 value={clientData.phone}
                 onChange={(e) => setClientData({ ...clientData, phone: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="+233 XX XXX XXXX"
               />
             </div>
@@ -168,7 +168,7 @@ export default function NewClient() {
                 type="date"
                 value={clientData.date_of_birth}
                 onChange={(e) => setClientData({ ...clientData, date_of_birth: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
             </div>
 
@@ -178,7 +178,7 @@ export default function NewClient() {
                 value={clientData.address}
                 onChange={(e) => setClientData({ ...clientData, address: e.target.value })}
                 rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Client's full address"
               />
             </div>
@@ -194,7 +194,7 @@ export default function NewClient() {
                 value={policyData.policy_type}
                 onChange={(e) => setPolicyData({ ...policyData, policy_type: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="life">Life Insurance</option>
                 <option value="health">Health Insurance</option>
@@ -214,7 +214,7 @@ export default function NewClient() {
                 value={policyData.premium_amount}
                 onChange={(e) => setPolicyData({ ...policyData, premium_amount: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="5000.00"
               />
             </div>
@@ -228,7 +228,7 @@ export default function NewClient() {
                 step="0.01"
                 value={policyData.coverage_amount}
                 onChange={(e) => setPolicyData({ ...policyData, coverage_amount: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="100000.00"
               />
             </div>
@@ -239,13 +239,13 @@ export default function NewClient() {
                 type="date"
                 value={policyData.start_date}
                 onChange={(e) => setPolicyData({ ...policyData, start_date: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-purple-50 rounded-xl">
-            <p className="text-sm text-purple-900">
+          <div className="mt-6 p-4 bg-orange-50 rounded-xl">
+            <p className="text-sm text-orange-900">
               <span className="font-semibold">Estimated Commission:</span>{' '}
               GHS {(parseFloat(policyData.premium_amount) * 0.1 || 0).toFixed(2)} (10% of premium)
             </p>
@@ -277,7 +277,7 @@ export default function NewClient() {
           <button
             type="submit"
             disabled={loading}
-            className="px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+            className="px-6 py-3 bg-orange-600 text-white rounded-xl font-semibold hover:bg-orange-700 transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
             <Save className="w-5 h-5" />
             <span>{loading ? 'Creating...' : 'Create Referral'}</span>

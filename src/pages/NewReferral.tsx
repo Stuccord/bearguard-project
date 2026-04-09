@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, ArrowLeft } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -83,7 +83,7 @@ export default function NewReferral() {
                 value={formData.client_name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                 placeholder="e.g., Kwame Mensah"
               />
             </div>
@@ -99,7 +99,7 @@ export default function NewReferral() {
                 value={formData.client_phone}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                 placeholder="0244-123-456"
               />
             </div>
@@ -114,7 +114,7 @@ export default function NewReferral() {
                 name="client_email"
                 value={formData.client_email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                 placeholder="client@email.com"
               />
             </div>
@@ -129,7 +129,7 @@ export default function NewReferral() {
                 value={formData.hospital}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
               >
                 <option value="">Select Hospital</option>
                 <option value="Akuse Government Hospital">Akuse Government Hospital</option>
@@ -156,7 +156,7 @@ export default function NewReferral() {
                 value={formData.injury_type}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
               >
                 <option value="">Select Status</option>
                 <option value="Injured">Injured</option>
@@ -176,7 +176,7 @@ export default function NewReferral() {
                 onChange={handleChange}
                 required
                 max={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
               />
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function NewReferral() {
               onChange={handleChange}
               required
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
               placeholder="Provide detailed description of how the accident occurred..."
             />
           </div>
@@ -218,7 +218,7 @@ export default function NewReferral() {
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+              className="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
             >
               {loading ? (
                 <>

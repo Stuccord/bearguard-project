@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Users, TrendingUp, Target, Award, UserPlus, X } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
@@ -96,7 +96,7 @@ export default function TeamOverview() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
       </div>
     );
   }
@@ -110,7 +110,7 @@ export default function TeamOverview() {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
         >
           <UserPlus className="w-5 h-5" />
           <span>Add Agent</span>
@@ -144,7 +144,7 @@ export default function TeamOverview() {
                   value={newAgent.fullName}
                   onChange={(e) => setNewAgent({ ...newAgent, fullName: e.target.value })}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="John Doe"
                 />
               </div>
@@ -156,7 +156,7 @@ export default function TeamOverview() {
                   value={newAgent.email}
                   onChange={(e) => setNewAgent({ ...newAgent, email: e.target.value })}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="john@example.com"
                 />
               </div>
@@ -169,7 +169,7 @@ export default function TeamOverview() {
                   onChange={(e) => setNewAgent({ ...newAgent, password: e.target.value })}
                   required
                   minLength={6}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="Minimum 6 characters"
                 />
               </div>
@@ -182,7 +182,7 @@ export default function TeamOverview() {
                   type="tel"
                   value={newAgent.phone}
                   onChange={(e) => setNewAgent({ ...newAgent, phone: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="+233 123 456 789"
                 />
               </div>
@@ -198,7 +198,7 @@ export default function TeamOverview() {
                 <button
                   type="submit"
                   disabled={createLoading}
-                  className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50"
                 >
                   {createLoading ? 'Creating...' : 'Add Agent'}
                 </button>
@@ -211,8 +211,8 @@ export default function TeamOverview() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center space-x-3">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <Users className="w-6 h-6 text-blue-600" />
+            <div className="p-3 bg-orange-100 rounded-lg">
+              <Users className="w-6 h-6 text-orange-600" />
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900">{teamMembers.length}</div>
@@ -237,8 +237,8 @@ export default function TeamOverview() {
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center space-x-3">
-            <div className="p-3 bg-indigo-100 rounded-lg">
-              <TrendingUp className="w-6 h-6 text-indigo-600" />
+            <div className="p-3 bg-orange-100 rounded-lg">
+              <TrendingUp className="w-6 h-6 text-orange-600" />
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900">
@@ -308,7 +308,7 @@ export default function TeamOverview() {
                     <div className="text-sm font-semibold text-gray-900">{member.policies_count}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-semibold text-indigo-700">
+                    <div className="text-sm font-semibold text-orange-700">
                       {formatCurrency(member.commissions_total)}
                     </div>
                   </td>
