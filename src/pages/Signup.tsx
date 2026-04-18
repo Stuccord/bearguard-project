@@ -48,11 +48,14 @@ export default function Signup({ onNavigate }: SignupProps) {
     setLoading(true);
 
     try {
+      // Redirect URL after email confirmation — lands on the login page of the deployed app
+      const redirectTo = `${window.location.origin}/login`;
+
       const { data: authData, error: signUpError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
-          emailRedirectTo: undefined,
+          emailRedirectTo: redirectTo,
           data: {
             full_name: formData.fullName,
             phone: formData.phone,
@@ -64,24 +67,17 @@ export default function Signup({ onNavigate }: SignupProps) {
       if (signUpError) throw signUpError;
 
       if (authData.user) {
-        // Wait for profile trigger
-        let retryCount = 0;
-        let profileReady = false;
-        while (retryCount < 5 && !profileReady) {
-          const { data: profile } = await supabase
-            .from('agents')
-            .select('id')
-            .eq('id', authData.user.id)
-            .maybeSingle();
-
-          if (profile) {
-            profileReady = true;
-          } else {
-            await new Promise(resolve => setTimeout(resolve, 500));
-            retryCount++;
-          }
-        }
-        window.location.reload();
+        setSuccess(true);
+        setLoading(false);
+        // Clear form
+        setFormData({
+          email: '',
+          password: '',
+          confirmPassword: '',
+          fullName: '',
+          phone: '',
+          hospitalAffiliation: ''
+        });
       }
     } catch (err: any) {
       if (err.message.includes('User already registered')) {
@@ -126,152 +122,168 @@ export default function Signup({ onNavigate }: SignupProps) {
 
             {success && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
-                <div className="flex items-center space-x-2">
-                  <Check className="w-5 h-5" />
-                  <span>Account created successfully! Redirecting to login...</span>
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="bg-green-100 p-2 rounded-full">
+                    <Check className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-lg font-bold">Check Your Inbox!</h3>
+                  <p>
+                    A confirmation email has been sent to <strong>{formData.email || 'your email'}</strong>. 
+                    Click the link in that email to activate your account, then log in.
+                  </p>
+                  <button
+                    onClick={() => onNavigate('login')}
+                    className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                  >
+                    Go to Login
+                  </button>
                 </div>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    required
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="John Doe"
-                  />
-                </div>
-              </div>
+            {!success && (
+              <>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Full Name
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="text"
+                        required
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="John Doe"
+                      />
+                    </div>
+                  </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Email Address
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="john@example.com"
+                      />
+                    </div>
+                  </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="050 123 4567"
-                  />
-                </div>
-              </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="050 123 4567"
+                      />
+                    </div>
+                  </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Hospital Affiliation (Optional)
-                </label>
-                <div className="relative">
-                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    value={formData.hospitalAffiliation}
-                    onChange={(e) => setFormData({ ...formData, hospitalAffiliation: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="Ridge Hospital"
-                  />
-                </div>
-              </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Hospital Affiliation (Optional)
+                    </label>
+                    <div className="relative">
+                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="text"
+                        value={formData.hospitalAffiliation}
+                        onChange={(e) => setFormData({ ...formData, hospitalAffiliation: e.target.value })}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="Ridge Hospital"
+                      />
+                    </div>
+                  </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Password
-                </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={formData.password}
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="••••••••"
-                  />
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Password
+                    </label>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="••••••••"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                    <p className="mt-1 text-xs text-gray-500">
+                      Must be 8+ characters with uppercase, lowercase, and number
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Confirm Password
+                    </label>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        required
+                        value={formData.confirmPassword}
+                        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                        className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="••••••••"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                  </div>
+
                   <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {loading ? 'Creating Account...' : 'Create Account'}
                   </button>
+                </form>
+
+                <div className="mt-6 text-center">
+                  <p className="text-gray-600">
+                    Already have an account?{' '}
+                    <button
+                      onClick={() => onNavigate('login')}
+                      className="text-orange-600 hover:text-orange-700 font-semibold"
+                    >
+                      Login
+                    </button>
+                  </p>
                 </div>
-                <p className="mt-1 text-xs text-gray-500">
-                  Must be 8+ characters with uppercase, lowercase, and number
-                </p>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Confirm Password
-                </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    required
-                    value={formData.confirmPassword}
-                    onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="••••••••"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                  >
-                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                  </button>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? 'Creating Account...' : 'Create Account'}
-              </button>
-            </form>
-
-            <div className="mt-6 text-center">
-              <p className="text-gray-600">
-                Already have an account?{' '}
-                <button
-                  onClick={() => onNavigate('login')}
-                  className="text-orange-600 hover:text-orange-700 font-semibold"
-                >
-                  Login
-                </button>
-              </p>
-            </div>
+              </>
+            )}
           </div>
         </div>
       </div>

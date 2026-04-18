@@ -23,19 +23,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const fetchAgentProfile = async (userId: string) => {
     setLoading(true);
     setSetupError(null);
+
     const fetchTimeout = setTimeout(() => {
       console.warn('Profile fetch timed out');
-      setSetupError('Profile setup timed out. Please try retrying or contact support.');
+      setSetupError('Profile setup timed out. Please tap Retry or contact support.');
       setLoading(false);
-    }, 10000);
+    }, 12000);
 
     try {
+      // ── Attempt 1: direct lookup by id ──────────────────────────────────
       console.log('Fetching agent profile for:', userId);
-      const { data, error } = await supabase
+      let { data, error } = await supabase
         .from('agents')
         .select('*')
         .eq('id', userId)
         .maybeSingle();
+
+      // ── Attempt 2: wait 1 s and retry (trigger may not have committed yet) ─
+      if (!data && !error) {
+        await new Promise(r => setTimeout(r, 1000));
+        ({ data, error } = await supabase
+          .from('agents')
+          .select('*')
+          .eq('id', userId)
+          .maybeSingle());
+      }
 
       if (error) {
         console.error('Error fetching agent profile:', error);
@@ -45,47 +57,75 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (data) {
         console.log('Profile found:', data.email);
         setAgent(data);
-      } else {
-        console.log('Profile not found, attempting fallback creation...');
-        const { data: userData, error: userError } = await supabase.auth.getUser();
-        
-        if (userError) {
-          console.error('Error getting user data for fallback:', userError);
-          setSetupError(`User data error: ${userError.message}`);
-        }
-
-        if (userData.user) {
-          console.log('Creating agent profile for user:', userData.user.email);
-          const { data: newProfile, error: createError } = await supabase
-            .from('agents')
-            .insert([{
-              id: userId,
-              email: userData.user.email,
-              full_name: userData.user.user_metadata?.full_name || userData.user.email,
-              role: userData.user.user_metadata?.role || 'agent',
-              phone: userData.user.user_metadata?.phone || null,
-              is_active: true
-            }])
-            .select()
-            .single();
-
-          if (createError) {
-            console.error('Error creating agent profile fallback:', createError);
-            setSetupError(`Creation error: ${createError.message}. This usually means your account exists in Auth but not in the database, and the automatic fix failed.`);
-          } else {
-            console.log('Fallback profile created successfully');
-            setAgent(newProfile);
-          }
-        }
+        return;
       }
-    } catch (error: any) {
-      console.error('Unexpected error in agent profile logic:', error);
-      setSetupError(`Unexpected error: ${error.message || 'Unknown error'}`);
+
+      // ── Fallback: trigger didn't run — repair the row ─────────────────────
+      console.log('Profile not found after retry, running fallback repair...');
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+
+      if (userError || !userData.user) {
+        setSetupError(`Could not load user data: ${userError?.message ?? 'Unknown error'}`);
+        return;
+      }
+
+      const u = userData.user;
+      console.log('Repairing profile for:', u.email);
+
+      // Step 1 — Re-link any orphaned agents row that has the same email
+      //           but a stale/different id (previous failed signup remnant)
+      const { data: relinked, error: relinkError } = await supabase
+        .from('agents')
+        .update({
+          id:                   userId,
+          full_name:            u.user_metadata?.full_name || u.email,
+          phone:                u.user_metadata?.phone     || null,
+          hospital_affiliation: u.user_metadata?.hospital_affiliation || '',
+          is_active:            true,
+        })
+        .eq('email', u.email)
+        .neq('id', userId)
+        .select()
+        .maybeSingle();
+
+      if (relinked && !relinkError) {
+        console.log('Orphaned agent row re-linked successfully');
+        setAgent(relinked);
+        return;
+      }
+
+      // Step 2 — No orphaned row found; create a fresh one (upsert by id is safe)
+      const { data: newProfile, error: createError } = await supabase
+        .from('agents')
+        .upsert([{
+          id:                   userId,
+          email:                u.email,
+          full_name:            u.user_metadata?.full_name || u.email,
+          role:                 u.user_metadata?.role      || 'agent',
+          phone:                u.user_metadata?.phone     || null,
+          hospital_affiliation: u.user_metadata?.hospital_affiliation || '',
+          is_active:            true,
+        }], { onConflict: 'id' })
+        .select()
+        .single();
+
+      if (createError) {
+        console.error('Fallback upsert failed:', createError);
+        setSetupError(`Setup failed: ${createError.message}. Please log out and try again.`);
+      } else {
+        console.log('Fallback profile created/repaired successfully');
+        setAgent(newProfile);
+      }
+
+    } catch (err: any) {
+      console.error('Unexpected error in agent profile logic:', err);
+      setSetupError(`Unexpected error: ${err.message || 'Unknown error'}`);
     } finally {
       clearTimeout(fetchTimeout);
       setLoading(false);
     }
   };
+
 
   useEffect(() => {
     let mounted = true;

@@ -39,9 +39,41 @@ import { Shield, ExternalLink } from 'lucide-react';
 
 function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
-  const [currentPage, setCurrentPage] = useState('landing');
+  const [currentPage, setCurrentPage] = useState(() => {
+    const path = window.location.pathname.substring(1);
+    if (path === 'signup' || path === 'join') return 'signup';
+    if (path === 'login') return 'login';
+    if (path === 'contact') return 'contact';
+    return 'landing';
+  });
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.substring(1);
+      if (['signup', 'login', 'contact', 'join'].includes(path)) {
+        setCurrentPage(path === 'join' ? 'signup' : path);
+      } else if (path === '') {
+        setCurrentPage('landing');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Update URL whenever currentPage changes
+  useEffect(() => {
+    const validPaths = ['signup', 'login', 'contact', 'landing'];
+    if (validPaths.includes(currentPage)) {
+      const newPath = currentPage === 'landing' ? '/' : `/${currentPage}`;
+      if (window.location.pathname !== newPath) {
+        window.history.pushState({}, '', newPath);
+      }
+    }
+  }, [currentPage]);
 
   if (!isConfigured) {
     return (
@@ -92,7 +124,13 @@ function AppContent() {
         setCurrentPage('referral-dashboard');
       }
     } else if (!user) {
-      setCurrentPage('landing');
+      // Respect deep links if they are valid public routes
+      const path = window.location.pathname.substring(1);
+      const isPublicPath = ['signup', 'login', 'contact', 'join'].includes(path);
+      
+      if (!isPublicPath && currentPage !== 'landing' && currentPage !== 'signup' && currentPage !== 'login' && currentPage !== 'contact') {
+        setCurrentPage('landing');
+      }
     }
   }, [agent, user]);
 
