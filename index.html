@@ -8,18 +8,23 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Restore deep-link URL saved by public/404.html (GitHub Pages SPA fix) -->
-    <script>
-      (function () {
-        var redirect = sessionStorage.getItem('spa_redirect');
-        if (redirect) {
-          sessionStorage.removeItem('spa_redirect');
-          if (redirect !== location.href && redirect !== location.pathname) {
-            // Restore the original path/hash without a page reload
-            history.replaceState(null, '', redirect);
+    <script type="text/javascript">
+      // GitHub Pages SPA Hero
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === 'p' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&') 
+          }).filter(function(s) {
+            return s.slice(0, 2) === 'p='
+          })[0].slice(2);
+          if (decoded !== l.pathname.slice(1)) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + (l.hash || '')
+            );
           }
         }
-      })();
+      }(window.location))
     </script>
     <script type="module" src="src/main.tsx"></script>
   </body>

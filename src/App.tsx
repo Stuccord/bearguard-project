@@ -40,28 +40,16 @@ import { Shield, ExternalLink } from 'lucide-react';
 function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
   const [currentPage, setCurrentPage] = useState(() => {
-    // 1. Check for SPA redirect from sessionStorage (GitHub Pages fix)
-    let initialPath = window.location.pathname;
-    const spaRedirect = sessionStorage.getItem('spa_redirect');
-    
-    if (spaRedirect) {
-      try {
-        const url = new URL(spaRedirect);
-        initialPath = url.pathname;
-        // Don't remove yet, index.html might still need it or we want to be safe
-      } catch (e) {
-        console.error('Failed to parse SPA redirect:', e);
-      }
-    }
-
-    // 2. Extract and normalize the path segment
-    const path = initialPath.replace(/^\/|\/$/g, '').toLowerCase();
+    // Normalize path — strip leading slash and trailing slash
+    const path = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
     const hash = window.location.hash;
 
-    console.log('Routing detected path:', path, 'with hash:', !!hash);
+    console.log('Routing check:', { path, hash: !!hash });
 
-    // 3. Resolve to protected routes
+    // Supabase email-confirmation redirect lands with #access_token=… on /login
+    // Ensure the login page is shown so onAuthStateChange can process the token
     if (hash.includes('access_token')) return 'login';
+
     if (['signup', 'join'].includes(path)) return 'signup';
     if (path === 'login') return 'login';
     if (path === 'contact') return 'contact';
