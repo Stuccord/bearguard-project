@@ -41,15 +41,21 @@ function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
   const [currentPage, setCurrentPage] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    const redirectPath = params.get('p');
-    const pathSegment = (redirectPath || window.location.pathname).replace(/^\/|\/$/g, '').toLowerCase();
+    const redirectPath = params.get('p') || '';
+    const currentPath = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
     const hash = window.location.hash;
 
+    // The segment we actually care about for routing
+    const target = (redirectPath || currentPath).replace(/^\/|\/$/g, '').toLowerCase();
+
+    console.log('[Routing] State Init:', { currentPath, redirectPath, target, hash });
+
     if (hash.includes('access_token')) return 'login';
-    if (['signup', 'join'].includes(pathSegment)) return 'signup';
-    if (pathSegment === 'login') return 'login';
-    if (pathSegment === 'contact') return 'contact';
+    if (target === 'signup' || target === 'join') return 'signup';
+    if (target === 'login') return 'login';
+    if (target === 'contact') return 'contact';
     
+    // Explicit root/fallback
     return 'landing';
   });
 
