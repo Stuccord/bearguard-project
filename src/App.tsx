@@ -40,17 +40,32 @@ import { Shield, ExternalLink } from 'lucide-react';
 function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
   const [currentPage, setCurrentPage] = useState(() => {
-    // Normalize path — strip leading slash and trailing slash
-    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    // 1. Check for SPA redirect from sessionStorage (GitHub Pages fix)
+    let initialPath = window.location.pathname;
+    const spaRedirect = sessionStorage.getItem('spa_redirect');
+    
+    if (spaRedirect) {
+      try {
+        const url = new URL(spaRedirect);
+        initialPath = url.pathname;
+        // Don't remove yet, index.html might still need it or we want to be safe
+      } catch (e) {
+        console.error('Failed to parse SPA redirect:', e);
+      }
+    }
+
+    // 2. Extract and normalize the path segment
+    const path = initialPath.replace(/^\/|\/$/g, '').toLowerCase();
     const hash = window.location.hash;
 
-    // Supabase email-confirmation redirect lands with #access_token=… on /login
-    // Ensure the login page is shown so onAuthStateChange can process the token
-    if (hash.includes('access_token') || hash.includes('type=signup')) return 'login';
+    console.log('Routing detected path:', path, 'with hash:', !!hash);
 
-    if (path === 'signup' || path === 'join') return 'signup';
-    if (path === 'login')   return 'login';
+    // 3. Resolve to protected routes
+    if (hash.includes('access_token')) return 'login';
+    if (['signup', 'join'].includes(path)) return 'signup';
+    if (path === 'login') return 'login';
     if (path === 'contact') return 'contact';
+    
     return 'landing';
   });
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);

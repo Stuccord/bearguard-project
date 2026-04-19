@@ -12,10 +12,12 @@
     <script>
       (function () {
         var redirect = sessionStorage.getItem('spa_redirect');
-        if (redirect && redirect !== location.href) {
+        if (redirect) {
           sessionStorage.removeItem('spa_redirect');
-          // Restore the original path/hash without a page reload
-          history.replaceState(null, '', redirect);
+          if (redirect !== location.href && redirect !== location.pathname) {
+            // Restore the original path/hash without a page reload
+            history.replaceState(null, '', redirect);
+          }
         }
       })();
     </script>
