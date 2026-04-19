@@ -40,29 +40,11 @@ import { Shield, ExternalLink } from 'lucide-react';
 function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
   const [currentPage, setCurrentPage] = useState(() => {
-    // 1. Check for standard GHP SPA redirect parameter (?p=...)
     const params = new URLSearchParams(window.location.search);
     const redirectPath = params.get('p');
-    
-    // 2. Determine base path (either from redirect or current URL)
-    let pathSegment = (redirectPath || window.location.pathname)
-      .replace(/^\/|\/$/g, '')
-      .toLowerCase();
-      
+    const pathSegment = (redirectPath || window.location.pathname).replace(/^\/|\/$/g, '').toLowerCase();
     const hash = window.location.hash;
 
-    console.log('Routing Initialization:', { 
-      rawPath: window.location.pathname, 
-      redirect: redirectPath,
-      resolved: pathSegment 
-    });
-
-    // 3. Clean up the URL if it was a redirect (remove the ?p= parameter)
-    if (redirectPath) {
-      window.history.replaceState(null, '', `/${pathSegment}${hash || ''}`);
-    }
-
-    // 4. Map to internal page identifiers
     if (hash.includes('access_token')) return 'login';
     if (['signup', 'join'].includes(pathSegment)) return 'signup';
     if (pathSegment === 'login') return 'login';
@@ -70,6 +52,55 @@ function AppContent() {
     
     return 'landing';
   });
+
+  // Force sync URL and state on mount
+  useLayoutEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get('p');
+    
+    if (redirectPath) {
+      const cleanPath = redirectPath.replace(/^\/|\/$/g, '').toLowerCase();
+      const newPath = cleanPath === 'landing' ? '/' : `/${cleanPath}`;
+      window.history.replaceState(null, '', newPath + window.location.hash);
+      
+      const pageMap: Record<string, string> = { 'login': 'login', 'signup': 'signup', 'join': 'signup', 'contact': 'contact' };
+      if (pageMap[cleanPath]) {
+        setCurrentPage(pageMap[cleanPath]);
+      }
+    } else {
+      const path = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
+      const pageMap: Record<string, string> = { 'login': 'login', 'signup': 'signup', 'join': 'signup', 'contact': 'contact' };
+      if (pageMap[path]) {
+        setCurrentPage(pageMap[path]);
+      }
+    }
+  }, []);
+
+  // Update URL whenever currentPage changes
+  useEffect(() => {
+    const validPaths = ['signup', 'login', 'contact', 'landing'];
+    if (validPaths.includes(currentPage)) {
+      const newPath = currentPage === 'landing' ? '/' : `/${currentPage}`;
+      if (window.location.pathname !== newPath && !window.location.search.includes('p=')) {
+        window.history.pushState({}, '', newPath);
+      }
+    }
+  }, [currentPage]);
+
+  // Protect internal routes from being reset to landing if they are deep-linked
+  useEffect(() => {
+    if (user && !agent && !loading) {
+      // Keep on current setup state
+    } else if (!user) {
+      const path = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
+      const isPublicPath = ['signup', 'login', 'contact', 'join'].includes(path);
+      
+      if (isPublicPath && currentPage !== path && (path !== 'join' || currentPage !== 'signup')) {
+        setCurrentPage(path === 'join' ? 'signup' : path);
+      }
+    }
+  }, [agent, user, currentPage]);
+
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
@@ -88,16 +119,6 @@ function AppContent() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Update URL whenever currentPage changes
-  useEffect(() => {
-    const validPaths = ['signup', 'login', 'contact', 'landing'];
-    if (validPaths.includes(currentPage)) {
-      const newPath = currentPage === 'landing' ? '/' : `/${currentPage}`;
-      if (window.location.pathname !== newPath) {
-        window.history.pushState({}, '', newPath);
-      }
-    }
-  }, [currentPage]);
 
   if (!isConfigured) {
     return (
