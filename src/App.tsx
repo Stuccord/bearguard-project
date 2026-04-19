@@ -40,9 +40,16 @@ import { Shield, ExternalLink } from 'lucide-react';
 function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
   const [currentPage, setCurrentPage] = useState(() => {
-    const path = window.location.pathname.substring(1);
+    // Normalize path — strip leading slash and trailing slash
+    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    const hash = window.location.hash;
+
+    // Supabase email-confirmation redirect lands with #access_token=… on /login
+    // Ensure the login page is shown so onAuthStateChange can process the token
+    if (hash.includes('access_token') || hash.includes('type=signup')) return 'login';
+
     if (path === 'signup' || path === 'join') return 'signup';
-    if (path === 'login') return 'login';
+    if (path === 'login')   return 'login';
     if (path === 'contact') return 'contact';
     return 'landing';
   });
