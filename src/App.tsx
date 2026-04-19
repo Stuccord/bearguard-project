@@ -40,19 +40,33 @@ import { Shield, ExternalLink } from 'lucide-react';
 function AppContent() {
   const { user, agent, loading, signOut, setupError } = useAuth();
   const [currentPage, setCurrentPage] = useState(() => {
-    // Normalize path — strip leading slash and trailing slash
-    const path = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
+    // 1. Check for standard GHP SPA redirect parameter (?p=...)
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get('p');
+    
+    // 2. Determine base path (either from redirect or current URL)
+    let pathSegment = (redirectPath || window.location.pathname)
+      .replace(/^\/|\/$/g, '')
+      .toLowerCase();
+      
     const hash = window.location.hash;
 
-    console.log('Routing check:', { path, hash: !!hash });
+    console.log('Routing Initialization:', { 
+      rawPath: window.location.pathname, 
+      redirect: redirectPath,
+      resolved: pathSegment 
+    });
 
-    // Supabase email-confirmation redirect lands with #access_token=… on /login
-    // Ensure the login page is shown so onAuthStateChange can process the token
+    // 3. Clean up the URL if it was a redirect (remove the ?p= parameter)
+    if (redirectPath) {
+      window.history.replaceState(null, '', `/${pathSegment}${hash || ''}`);
+    }
+
+    // 4. Map to internal page identifiers
     if (hash.includes('access_token')) return 'login';
-
-    if (['signup', 'join'].includes(path)) return 'signup';
-    if (path === 'login') return 'login';
-    if (path === 'contact') return 'contact';
+    if (['signup', 'join'].includes(pathSegment)) return 'signup';
+    if (pathSegment === 'login') return 'login';
+    if (pathSegment === 'contact') return 'contact';
     
     return 'landing';
   });
