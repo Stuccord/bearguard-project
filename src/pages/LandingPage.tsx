@@ -665,9 +665,10 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
 
           <div className="border-t border-gray-800 pt-8 text-center">
             <p className="text-lg text-gray-400">
-              &copy; 2025 BearGuard Support Services. All rights reserved.
+              &copy; {new Date().getFullYear()} BearGuard Support Services. All rights reserved.
               <span className="text-orange-500 font-semibold"> We fight for what you deserve.</span>
             </p>
+            <p className="mt-4 opacity-20 text-[10px] uppercase tracking-[0.2em] font-mono">Build ID: 2026-04-19-V7-FINAL-SYNC</p>
           </div>
         </div>
       </footer>
