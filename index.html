@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BearGuard</title>
-    <script type="module" crossorigin src="/assets/index-C9gfK_QB.js"></script>
+    <script type="module" crossorigin src="/assets/index-CvXqEQ_b.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CwqDbBNQ.css">
   </head>
   <body>
@@ -14,10 +14,12 @@
     <script>
       (function () {
         var redirect = sessionStorage.getItem('spa_redirect');
-        if (redirect && redirect !== location.href) {
+        if (redirect) {
           sessionStorage.removeItem('spa_redirect');
-          // Restore the original path/hash without a page reload
-          history.replaceState(null, '', redirect);
+          if (redirect !== location.href && redirect !== location.pathname) {
+            // Restore the original path/hash without a page reload
+            history.replaceState(null, '', redirect);
+          }
         }
       })();
     </script>
