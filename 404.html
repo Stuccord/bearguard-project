@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BearGuard</title>
+    <script>
+      // GitHub Pages SPA deep-link fix.
+      // When GitHub Pages can't find a file (e.g. /signup, /login), it serves
+      // this 404.html. We save the full URL to sessionStorage and redirect to
+      // the root so the React app can boot normally and restore the path.
+      sessionStorage.setItem('spa_redirect', location.href);
+    </script>
+    <meta http-equiv="refresh" content="0;URL='/'" />
+  </head>
+  <body>
+    <p>Redirecting&hellip;</p>
+  </body>
+</html>
