@@ -2,29 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BearGuard</title>
-    <!-- SPA redirect handler: must run BEFORE React loads -->
-    <script>
-      (function() {
-        var params = new URLSearchParams(window.location.search);
-        var p = params.get('p');
-        if (p) {
-          // Remove trailing/leading slashes and decode ~and~ back to &
-          var path = p.replace(/^\/*|\/*$/g, '').replace(/~and~/g, '&');
-          // Rebuild search string without the 'p' param
-          params.delete('p');
-          var q = params.get('q') ? '?' + params.get('q').replace(/~and~/g, '&') : (params.toString() ? '?' + params.toString() : '');
-          params.delete('q');
-          var newUrl = '/' + path + q + window.location.hash;
-          // Replace so the back button works properly
-          window.history.replaceState(null, '', newUrl);
-        }
-      })();
-    </script>
-    <script type="module" crossorigin src="/assets/index-yo_81lXv.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dm0Hlh1b.css">
+    <title>Rich Dream Consult | Multi-Award-Winning Consultancy</title>
+    <meta name="description" content="Rich Dream Consult provides expert services across travel & tours, information technology, and business management consultancy. Multi-award-winning agency." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-CD2_eiCR.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-mbARmLFL.css">
   </head>
   <body>
     <div id="root"></div>
