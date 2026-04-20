@@ -5,11 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BearGuard</title>
-    <script type="module" crossorigin src="/assets/index-DPep-AJZ.js"></script>
+    <!-- SPA redirect handler: must run BEFORE React loads -->
+    <script>
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          // Remove trailing/leading slashes and decode ~and~ back to &
+          var path = p.replace(/^\/*|\/*$/g, '').replace(/~and~/g, '&');
+          // Rebuild search string without the 'p' param
+          params.delete('p');
+          var q = params.get('q') ? '?' + params.get('q').replace(/~and~/g, '&') : (params.toString() ? '?' + params.toString() : '');
+          params.delete('q');
+          var newUrl = '/' + path + q + window.location.hash;
+          // Replace so the back button works properly
+          window.history.replaceState(null, '', newUrl);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-yo_81lXv.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Dm0Hlh1b.css">
   </head>
   <body>
     <div id="root"></div>
-
   </body>
 </html>
