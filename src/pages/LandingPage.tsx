@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Shield, Heart, TrendingUp, Users, FileCheck, Phone, Mail, MapPin, CheckCircle, ArrowRight, Menu, X, Clock, Award, Headphones, Star, DollarSign, Briefcase, Activity, Calendar } from 'lucide-react';
+import { Shield, Heart, TrendingUp, Users, FileCheck, Phone, Mail, MapPin, CheckCircle, ArrowRight, Menu, X, Clock, Award, Headphones, Star, DollarSign, Briefcase, Activity, Calendar, Copy, Check, Share2 } from 'lucide-react';
 import AppointmentModal from '../components/AppointmentModal';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -13,6 +13,21 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
   const [scrolled, setScrolled] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [appointmentModalOpen, setAppointmentModalOpen] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const SIGNUP_URL = 'https://www.bearguardss.com/join';
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(SIGNUP_URL).then(() => {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2500);
+    });
+  };
+
+  const handleWhatsAppShare = () => {
+    const msg = encodeURIComponent(`🐻 Join the BearGuard Referral Network and earn GHC 200 per successful referral!\n\nSign up here: ${SIGNUP_URL}`);
+    window.open(`https://wa.me/?text=${msg}`, '_blank');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -477,6 +492,38 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                 <span>Join Our Network Today</span>
                 <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
               </button>
+
+              {/* Shareable Direct Link Card */}
+              <div className="mt-8 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Share2 className="w-5 h-5 text-orange-200" />
+                  <p className="text-orange-100 font-semibold text-base">Share the Signup Link</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 bg-white/20 rounded-xl px-4 py-3 font-mono text-sm text-white truncate select-all">
+                    {SIGNUP_URL}
+                  </div>
+                  <button
+                    onClick={handleCopyLink}
+                    title="Copy link"
+                    className={`flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                      linkCopied
+                        ? 'bg-green-500 text-white shadow-lg shadow-green-500/40'
+                        : 'bg-white text-orange-600 hover:bg-orange-50 shadow-lg'
+                    }`}
+                  >
+                    {linkCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {linkCopied ? 'Copied!' : 'Copy'}
+                  </button>
+                </div>
+                <button
+                  onClick={handleWhatsAppShare}
+                  className="mt-3 w-full flex items-center justify-center gap-2 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold text-sm transition-all shadow-lg"
+                >
+                  <span className="text-base">📲</span>
+                  Share via WhatsApp
+                </button>
+              </div>
             </div>
 
             <div className="relative group">
