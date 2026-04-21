@@ -716,7 +716,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               &copy; {new Date().getFullYear()} BearGuard Support Services. All rights reserved.
               <span className="text-orange-500 font-semibold"> We fight for what you deserve.</span>
             </p>
-            <p className="mt-4 opacity-20 text-[10px] uppercase tracking-[0.2em] font-mono">Build ID: 2026-04-19-V7-FINAL-SYNC</p>
+            <p className="mt-4 opacity-20 text-[10px] uppercase tracking-[0.2em] font-mono">Build ID: 2026-04-21-V8-PROD-SYNC</p>
           </div>
         </div>
       </footer>
