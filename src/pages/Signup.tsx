@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Mail, Lock, User, Phone, Building, Eye, EyeOff, Check, DollarSign, Users, Shield, TrendingUp, Star } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, Check } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 interface SignupProps {
@@ -91,12 +91,7 @@ export default function Signup({ onNavigate }: SignupProps) {
     }
   };
 
-  const perks = [
-    { icon: DollarSign, title: 'GHC 200 Per Referral', desc: 'Earn for every successful client you refer' },
-    { icon: Users, title: 'Open to Everyone', desc: 'Doctors, nurses, staff, community leaders' },
-    { icon: TrendingUp, title: 'Monthly Payouts', desc: 'Reliable commissions paid every month' },
-    { icon: Shield, title: 'Trusted & Secure', desc: 'Backed by Ghana\'s #1 claims agency' },
-  ];
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f3f4f6] p-4 relative py-12">

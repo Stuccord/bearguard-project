@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Mail, Lock, Eye, EyeOff, Check, Shield, DollarSign, TrendingUp, Users } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, Check } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 
@@ -61,12 +61,7 @@ export default function Login({ onNavigate }: LoginProps = {}) {
     }
   };
 
-  const highlights = [
-    { icon: DollarSign, label: 'GHC 200 per referral' },
-    { icon: TrendingUp, label: 'Monthly commission payouts' },
-    { icon: Users, label: 'Growing partner network' },
-    { icon: Shield, label: 'Secure & trusted platform' },
-  ];
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f3f4f6] p-4 relative py-10">
