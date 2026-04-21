@@ -49,7 +49,7 @@ function AppContent() {
     // The segment we actually care about for routing
     const target = (redirectPath || currentPath).replace(/^\/|\/$/g, '').toLowerCase();
 
-    console.log('[Routing] State Init:', { currentPath, redirectPath, target, hash });
+    console.log('[Routing] State Init:', { currentPath, redirectPath, target, hash, full: window.location.href });
 
     if (hash.includes('access_token')) return 'login';
     if (target === 'signup' || target === 'join') return 'signup';
