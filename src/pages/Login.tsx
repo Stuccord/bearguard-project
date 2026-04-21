@@ -200,8 +200,5 @@ export default function Login({ onNavigate }: LoginProps = {}) {
         )}
       </div>
     </div>
-  );     </div>
-      </div>
-    </div>
   );
 }
