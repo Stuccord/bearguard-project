@@ -99,278 +99,159 @@ export default function Signup({ onNavigate }: SignupProps) {
   ];
 
   return (
-    <div className="min-h-screen flex bg-slate-950">
+    <div className="min-h-screen flex items-center justify-center bg-[#f3f4f6] p-4 relative py-12">
+      <button
+        onClick={() => onNavigate('landing')}
+        className="absolute left-6 top-6 sm:left-8 sm:top-8 flex items-center gap-2 text-gray-400 hover:text-gray-700 transition-colors font-semibold text-[15px]"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        Back
+      </button>
 
-      {/* ── Left Panel (desktop only) ── */}
-      <div className="hidden lg:flex flex-col justify-between w-[48%] bg-gradient-to-br from-slate-900 via-slate-950 to-orange-950 px-14 py-12 relative overflow-hidden">
-        {/* Decorative blobs */}
-        <div className="absolute top-0 left-0 w-80 h-80 bg-orange-600/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+      <div className="max-w-[500px] w-full bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 sm:p-10 my-8">
+        <div className="text-center mb-8">
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-[60px] h-[60px] mx-auto mb-4" />
+          <h1 className="text-3xl font-extrabold text-[#0f172a] mb-1">Create Account</h1>
+          <p className="text-[#64748b] text-[15px]">Join the BearGuard Referral Network</p>
+        </div>
 
-        {/* Logo */}
-        <button
-          onClick={() => onNavigate('landing')}
-          className="flex items-center gap-3 group w-fit relative z-10"
-        >
-          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-12 h-12" />
-          <div>
-            <span className="text-2xl font-bold text-white tracking-tight group-hover:text-orange-400 transition-colors">
-              Bear<span className="text-orange-500">Guard</span>
-            </span>
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Support Services</p>
-          </div>
-        </button>
-
-        {/* Pitch copy */}
-        <div className="relative z-10 space-y-8">
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-sm font-semibold mb-6">
-              <Star className="w-4 h-4 fill-orange-400" />
-              Referral Partner Program
+        {success ? (
+          <div className="bg-green-50 border border-green-200 rounded-[16px] p-8 text-center mt-4">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Check className="w-8 h-8 text-green-600" />
             </div>
-            <h2 className="text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-4">
-              Earn While<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                Helping Others
-              </span>
-            </h2>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Refer accident victims to BearGuard and earn <strong className="text-orange-400">GHC 200</strong> for every successful case—paid monthly.
+            <h3 className="text-xl font-bold text-[#0f172a] mb-2">Check Your Inbox!</h3>
+            <p className="text-[#475569] mb-8 text-[15px]">
+              A confirmation email has been sent to{' '}
+              <strong className="text-[#0f172a]">{successEmail}</strong>.
+              Click the link inside to activate your account.
             </p>
+            <button
+              onClick={() => onNavigate('login')}
+              className="w-full py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-[12px] font-bold transition-all shadow-[0_4px_14px_rgba(234,88,12,0.39)]"
+            >
+              Go to Login
+            </button>
           </div>
-
-          <div className="space-y-4">
-            {perks.map((perk, i) => {
-              const Icon = perk.icon;
-              return (
-                <div key={i} className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all">
-                  <div className="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-orange-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm">{perk.title}</p>
-                    <p className="text-gray-400 text-sm">{perk.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Testimonial quote */}
-        <div className="relative z-10 border-t border-white/10 pt-8">
-          <p className="text-gray-300 italic text-base leading-relaxed mb-3">
-            "I've already earned over GHC 2,000 just by referring patients I meet in the ward. It's easy and it helps them too."
-          </p>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center font-bold text-white">N</div>
-            <div>
-              <p className="text-white font-semibold text-sm">Nurse Abena</p>
-              <p className="text-gray-500 text-xs">Partner, Korle Bu Teaching Hospital</p>
-            </div>
-            <div className="flex ml-auto">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />)}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Right Panel (Form) ── */}
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-10 bg-white overflow-y-auto">
-
-        {/* Mobile back + logo */}
-        <div className="lg:hidden flex items-center justify-between mb-8">
-          <button
-            onClick={() => onNavigate('landing')}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-800 transition-colors text-sm"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back
-          </button>
-          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-10 h-10" />
-        </div>
-
-        {/* Back link (desktop) */}
-        <button
-          onClick={() => onNavigate('landing')}
-          className="hidden lg:flex items-center gap-2 text-gray-400 hover:text-gray-700 transition-colors text-sm mb-10 w-fit"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Home
-        </button>
-
-        <div className="max-w-md w-full mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-extrabold text-gray-900 mb-1">Create Your Account</h1>
-            <p className="text-gray-500 text-base">Join the BearGuard Referral Network and start earning today.</p>
-          </div>
-
-          {/* Success State */}
-          {success && (
-            <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Check className="w-8 h-8 text-green-600" />
+        ) : (
+          <>
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-[12px] text-red-700 text-[14px] font-medium">
+                {error}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Check Your Inbox!</h3>
-              <p className="text-gray-600 mb-6">
-                A confirmation email has been sent to{' '}
-                <strong className="text-gray-900">{successEmail}</strong>.
-                Click the link to activate your account.
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-[14px] font-semibold text-[#334155] mb-2">Full Name</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  className="w-full px-4 py-3 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                  placeholder="John Doe"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[14px] font-semibold text-[#334155] mb-2">Email Address</label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                  placeholder="agent@insurance.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[14px] font-semibold text-[#334155] mb-2">Phone Number</label>
+                <input
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-3 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                  placeholder="050 123 4567"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[14px] font-semibold text-[#334155] mb-2">
+                  Hospital / Organisation <span className="text-[#94a3b8] font-normal">(Optional)</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.hospitalAffiliation}
+                  onChange={(e) => setFormData({ ...formData, hospitalAffiliation: e.target.value })}
+                  className="w-full px-4 py-3 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                  placeholder="Ridge Hospital"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[14px] font-semibold text-[#334155] mb-2">Password</label>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                      className="w-full pl-4 pr-11 py-3 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                      placeholder="••••••••"
+                    />
+                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94a3b8] hover:text-[#64748b]">
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[14px] font-semibold text-[#334155] mb-2">Confirm</label>
+                  <div className="relative">
+                    <input
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      required
+                      value={formData.confirmPassword}
+                      onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                      className="w-full pl-4 pr-11 py-3 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                      placeholder="••••••••"
+                    />
+                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94a3b8] hover:text-[#64748b]">
+                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p className="text-[12px] text-[#94a3b8] -mt-1 pb-1">
+                8+ characters · uppercase · lowercase · number
               </p>
+
               <button
-                onClick={() => onNavigate('login')}
-                className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-orange-500/30"
+                type="submit"
+                disabled={loading}
+                className="w-full py-3.5 mt-2 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-[12px] font-bold text-[16px] transition-all shadow-[0_4px_14px_rgba(234,88,12,0.39)] disabled:opacity-60 flex items-center justify-center gap-2"
               >
-                Go to Login
+                {loading ? 'Creating Account…' : 'Sign Up'}
               </button>
-            </div>
-          )}
 
-          {/* Form */}
-          {!success && (
-            <>
-              {error && (
-                <div className="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm font-medium">
-                  {error}
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Full Name */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name</label>
-                  <div className="relative">
-                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="text"
-                      required
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
-                  <div className="relative">
-                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Phone Number</label>
-                  <div className="relative">
-                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                      placeholder="050 123 4567"
-                    />
-                  </div>
-                </div>
-
-                {/* Hospital Affiliation */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                    Hospital / Organisation <span className="text-gray-400 font-normal">(Optional)</span>
-                  </label>
-                  <div className="relative">
-                    <Building className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="text"
-                      value={formData.hospitalAffiliation}
-                      onChange={(e) => setFormData({ ...formData, hospitalAffiliation: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                      placeholder="Ridge Hospital"
-                    />
-                  </div>
-                </div>
-
-                {/* Password row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Password</label>
-                    <div className="relative">
-                      <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                      <input
-                        type={showPassword ? 'text' : 'password'}
-                        required
-                        value={formData.password}
-                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                        placeholder="••••••••"
-                      />
-                      <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Confirm</label>
-                    <div className="relative">
-                      <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                      <input
-                        type={showConfirmPassword ? 'text' : 'password'}
-                        required
-                        value={formData.confirmPassword}
-                        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                        className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                        placeholder="••••••••"
-                      />
-                      <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                        {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-400 -mt-2">
-                  8+ characters · uppercase · lowercase · number
+              <div className="pt-4 pb-2">
+                <p className="text-center text-[14px] text-[#64748b]">
+                  Already have an account?{' '}
+                  <button
+                    onClick={() => onNavigate('login')}
+                    type="button"
+                    className="text-[#ea580c] hover:text-[#c2410c] font-semibold transition-colors"
+                  >
+                    Log In
+                  </button>
                 </p>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white rounded-xl font-bold text-base transition-all shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transform hover:scale-[1.02] active:scale-100 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
-                >
-                  {loading ? (
-                    <>
-                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                      </svg>
-                      Creating Account…
-                    </>
-                  ) : 'Join the Network'}
-                </button>
-              </form>
-
-              <p className="text-center text-sm text-gray-500 mt-6">
-                Already have an account?{' '}
-                <button
-                  onClick={() => onNavigate('login')}
-                  className="text-orange-600 hover:text-orange-700 font-semibold transition-colors"
-                >
-                  Login
-                </button>
-              </p>
-            </>
-          )}
-        </div>
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

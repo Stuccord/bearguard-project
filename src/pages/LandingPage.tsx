@@ -93,7 +93,8 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       }`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center">
-            <div className="flex items-center cursor-pointer group" onClick={() => scrollToSection('home')}>
+            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => scrollToSection('home')}>
+              <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-14 h-14 sm:w-16 sm:h-16 brightness-0 invert" />
               <div className="flex flex-col">
                 <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight transition-all duration-300 group-hover:text-orange-500">
                   Bear<span className="text-orange-500 group-hover:text-white">Guard</span>
@@ -654,9 +655,9 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <img
-                src="Untitled-2 (12).png"
+                src="Ps-Leo_9-removebg-preview.png"
                 alt="BearGuard Support Services"
-                className="h-40 w-auto mb-6"
+                className="w-40 h-40 mb-6 brightness-0 invert"
               />
               <p className="text-gray-400 text-xl leading-relaxed mb-4">We fight for what you deserve</p>
               <div className="flex space-x-4">

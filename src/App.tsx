@@ -33,6 +33,7 @@ import Notifications from './pages/Notifications';
 import Sidebar from './components/Sidebar';
 import TopNav from './components/TopNav';
 import Contact from './pages/Contact';
+import WhatsAppButton from './components/WhatsAppButton';
 
 import { isConfigured } from './lib/supabase';
 import { Shield, ExternalLink } from 'lucide-react';
@@ -201,7 +202,7 @@ function AppContent() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-32 h-32 mx-auto mb-4 animate-pulse" />
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-40 h-40 mx-auto mb-4 animate-pulse" />
           <div className="flex justify-center space-x-2">
             <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
             <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
@@ -232,7 +233,7 @@ function AppContent() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
         <div className="text-center max-w-sm w-full bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-24 h-24 mx-auto mb-6 animate-pulse" />
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-32 h-32 mx-auto mb-6 animate-pulse" />
           <h2 className="text-xl font-bold text-gray-900 mb-2">Setting up your profile</h2>
           <p className="text-gray-600 mb-6">This will only take a moment.</p>
           
@@ -393,6 +394,7 @@ export default function App() {
   return (
     <AuthProvider>
       <AppContent />
+      <WhatsAppButton />
     </AuthProvider>
   );
 }

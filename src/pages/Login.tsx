@@ -69,258 +69,138 @@ export default function Login({ onNavigate }: LoginProps = {}) {
   ];
 
   return (
-    <div className="min-h-screen flex bg-slate-950">
+    <div className="min-h-screen flex items-center justify-center bg-[#f3f4f6] p-4 relative py-10">
+      {onNavigate && (
+        <button
+          onClick={() => onNavigate('landing')}
+          className="absolute left-6 top-6 sm:left-8 sm:top-8 flex items-center gap-2 text-gray-400 hover:text-gray-700 transition-colors font-semibold text-[15px]"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          Back
+        </button>
+      )}
 
-      {/* ── Left Panel ── */}
-      <div className="hidden lg:flex flex-col justify-between w-[45%] bg-gradient-to-br from-slate-900 via-slate-950 to-orange-950 px-14 py-12 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-80 h-80 bg-orange-600/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+      <div className="max-w-[420px] w-full bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 sm:p-10">
+        <div className="text-center mb-8">
+          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-[60px] h-[60px] mx-auto mb-4" />
+          <h1 className="text-3xl font-extrabold text-[#0f172a] mb-1">BearGuard</h1>
+          <p className="text-[#64748b] text-[15px]">Referral Rep Portal</p>
+        </div>
 
-        {/* Logo */}
-        {onNavigate ? (
-          <button
-            onClick={() => onNavigate('landing')}
-            className="flex items-center gap-3 group w-fit relative z-10"
-          >
-            <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-12 h-12" />
-            <div>
-              <span className="text-2xl font-bold text-white tracking-tight group-hover:text-orange-400 transition-colors">
-                Bear<span className="text-orange-500">Guard</span>
-              </span>
-              <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Support Services</p>
-            </div>
-          </button>
-        ) : (
-          <div className="flex items-center gap-3 relative z-10">
-            <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-12 h-12" />
-            <div>
-              <span className="text-2xl font-bold text-white">Bear<span className="text-orange-500">Guard</span></span>
-              <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Support Services</p>
-            </div>
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-red-700 text-sm font-medium">
+            {error}
+          </div>
+        )}
+        {resetEmailSent && (
+          <div className="mb-6 p-4 bg-green-50 border border-green-100 rounded-xl text-green-700 text-sm font-medium flex items-center gap-2">
+            <Check className="w-4 h-4 flex-shrink-0" />
+            Reset link sent! Check your email inbox.
           </div>
         )}
 
-        {/* Welcome copy */}
-        <div className="relative z-10 space-y-8">
-          <div>
-            <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest mb-4">Referral Rep Portal</p>
-            <h2 className="text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-4">
-              Welcome<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                Back!
-              </span>
-            </h2>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Sign in to track your referrals, view your commissions, and manage your account.
-            </p>
-          </div>
+        {showResetForm ? (
+          <form onSubmit={handlePasswordReset} className="space-y-6 flex flex-col">
+            <div>
+              <label className="block text-[14px] font-semibold text-[#334155] mb-2">Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-3.5 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                placeholder="agent@insurance.com"
+              />
+            </div>
 
-          <div className="space-y-3">
-            {highlights.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3">
-                  <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 text-orange-400" />
-                  </div>
-                  <p className="text-gray-300 text-sm font-medium">{item.label}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Footer caption */}
-        <div className="relative z-10 border-t border-white/10 pt-6">
-          <p className="text-gray-500 text-sm">
-            Don't have an account yet?{' '}
-            {onNavigate && (
-              <button
-                onClick={() => onNavigate('signup')}
-                className="text-orange-400 hover:text-orange-300 font-semibold transition-colors"
-              >
-                Join the network →
-              </button>
-            )}
-          </p>
-        </div>
-      </div>
-
-      {/* ── Right Panel (Form) ── */}
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-10 bg-white overflow-y-auto">
-
-        {/* Mobile header */}
-        <div className="lg:hidden flex items-center justify-between mb-8">
-          {onNavigate && (
             <button
-              onClick={() => onNavigate('landing')}
-              className="flex items-center gap-2 text-gray-500 hover:text-gray-800 transition-colors text-sm"
+              type="submit"
+              disabled={loading}
+              className="w-full py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-[12px] font-bold text-[16px] transition-all shadow-[0_4px_14px_rgba(234,88,12,0.39)] disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Back
+              {loading ? 'Sending…' : 'Send Reset Link'}
             </button>
-          )}
-          <img src="Ps-Leo_9-removebg-preview.png" alt="BearGuard" className="w-10 h-10 ml-auto" />
-        </div>
 
-        {/* Desktop back link */}
-        {onNavigate && (
-          <button
-            onClick={() => onNavigate('landing')}
-            className="hidden lg:flex items-center gap-2 text-gray-400 hover:text-gray-700 transition-colors text-sm mb-10 w-fit"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </button>
-        )}
-
-        <div className="max-w-sm w-full mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-extrabold text-gray-900 mb-1">
-              {showResetForm ? 'Reset Password' : 'Sign In'}
-            </h1>
-            <p className="text-gray-500 text-base">
-              {showResetForm
-                ? 'Enter your email and we\'ll send you a reset link.'
-                : 'Access your BearGuard referral dashboard.'}
-            </p>
-          </div>
-
-          {/* Alerts */}
-          {error && (
-            <div className="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm font-medium">
-              {error}
+            <button
+              type="button"
+              onClick={() => { setShowResetForm(false); setError(''); }}
+              className="w-full text-center text-[#ea580c] hover:text-[#c2410c] font-semibold text-[14px] transition-colors mt-6"
+            >
+              Back to Login
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-6 flex flex-col">
+            <div>
+              <label className="block text-[14px] font-semibold text-[#334155] mb-2">Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-3.5 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                placeholder="agent@insurance.com"
+              />
             </div>
-          )}
-          {resetEmailSent && (
-            <div className="mb-5 p-4 bg-green-50 border border-green-200 rounded-xl text-green-700 text-sm font-medium flex items-center gap-2">
-              <Check className="w-4 h-4 flex-shrink-0" />
-              Reset link sent! Check your email inbox.
-            </div>
-          )}
 
-          {/* Reset form */}
-          {showResetForm ? (
-            <form onSubmit={handlePasswordReset} className="space-y-5">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
-                <div className="relative">
-                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                    placeholder="your@email.com"
-                  />
-                </div>
+            <div>
+              <label className="block text-[14px] font-semibold text-[#334155] mb-2">Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full pl-4 pr-11 py-3.5 text-[15px] border border-[#e2e8f0] rounded-[12px] focus:ring-2 focus:ring-[#f97316] focus:border-transparent outline-none transition-all placeholder:text-[#94a3b8]"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94a3b8] hover:text-[#64748b] transition-colors"
+                >
+                  {showPassword ? <EyeOff className="w-[18px] h-[18px]" /> : <Eye className="w-[18px] h-[18px]" />}
+                </button>
               </div>
+            </div>
 
+            <div className="pt-2">
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-orange-500/30 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-[12px] font-bold text-[16px] transition-all shadow-[0_4px_14px_rgba(234,88,12,0.39)] hover:shadow-lg disabled:opacity-60 flex items-center justify-center gap-2"
               >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                    </svg>
-                    Sending…
-                  </>
-                ) : 'Send Reset Link'}
+                {loading ? 'Signing in…' : 'Sign In'}
               </button>
+            </div>
 
+            <div className="pt-6 font-medium text-center space-y-4">
               <button
                 type="button"
-                onClick={() => { setShowResetForm(false); setError(''); }}
-                className="w-full text-center text-gray-500 hover:text-gray-800 font-medium text-sm transition-colors"
+                onClick={() => { setShowResetForm(true); setError(''); }}
+                className="block w-full text-center text-[#ea580c] hover:text-[#c2410c] font-semibold text-[14px] transition-colors"
               >
-                ← Back to Login
+                Forgot Password?
               </button>
-            </form>
-          ) : (
-            /* Login form */
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
-                <div className="relative">
-                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-sm font-semibold text-gray-700">Password</label>
-                  <button
-                    type="button"
-                    onClick={() => { setShowResetForm(true); setError(''); }}
-                    className="text-xs text-orange-600 hover:text-orange-700 font-semibold transition-colors"
-                  >
-                    Forgot Password?
-                  </button>
-                </div>
-                <div className="relative">
-                  <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-gray-50 focus:bg-white transition-all outline-none"
-                    placeholder="••••••••"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                  >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white rounded-xl font-bold text-base transition-all shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transform hover:scale-[1.02] active:scale-100 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
-              >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                    </svg>
-                    Signing in…
-                  </>
-                ) : 'Sign In'}
-              </button>
-
+              
               {onNavigate && (
-                <p className="text-center text-sm text-gray-500">
+                <p className="text-center text-[14px] text-[#64748b]">
                   Don't have an account?{' '}
                   <button
                     type="button"
                     onClick={() => onNavigate('signup')}
-                    className="text-orange-600 hover:text-orange-700 font-semibold transition-colors"
+                    className="text-[#ea580c] hover:text-[#c2410c] font-semibold transition-colors"
                   >
-                    Join the Network
+                    Sign Up
                   </button>
                 </p>
               )}
-            </form>
-          )}
-        </div>
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+  );     </div>
       </div>
     </div>
   );
